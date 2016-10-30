@@ -93,3 +93,15 @@ function general_page_callback(){
 function profile_page_callback(){
 	include_once(plugin_dir_path( __FILE__ ).'inc/profile.php');
 }
+
+
+//inc/general.php
+
+<form action="options.php" method="post">
+<?php  settings_fields('general_settings_group');       ?>
+<?php  do_settings_sections('general_settins');       ?>
+<?php  submit_button();       ?>
+</form>
+
+//inc/profile.php
+<h1>this is profile page</h1>
