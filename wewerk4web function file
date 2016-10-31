@@ -1,0 +1,177 @@
+<?php
+register_nav_menu('header-menu',__( 'Header Menu' ));
+register_nav_menu('footer-menu',__( 'Footer Menu' ));
+
+function add_menuclass($ulclass) {
+return preg_replace('/<a rel="colorbox-link"/', '<a class="colorbox-link"', $ulclass, 1);
+}
+add_filter('wp_nav_menu','add_menuclass');
+
+if ( function_exists( 'add_theme_support' ) )
+add_theme_support( 'post-thumbnails' );
+add_shortcode( 'list-random-testimonial', 'rmcc_post_listing_shortcode1' );
+
+function rmcc_post_listing_shortcode1( $atts ) {
+    ob_start();
+    $query = new WP_Query( array(
+        'post_type' => 'testimonials',
+        'posts_per_page' => 1,
+        'orderby' => 'rand',
+
+    ) );
+    if ( $query->have_posts() ) { ?>
+			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                <div id="testimonials" class="random">
+                    <div class="row">
+                        <div class="col-sm-10 equalspace small_screen_center">
+                            <div class="get_content">
+                                <div class="testimonial_wrap">
+                                	<?php the_content();?>
+                                </div><!--testimonial_wrap-->
+                            </div><!--get_content-->
+                        </div><!--col-sm-10-->
+                    </div><!--row-->
+                </div><!--get_help-->
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+    <?php $myvariable = ob_get_clean();
+    return $myvariable;
+    }
+}
+
+if (function_exists('register_sidebar')):
+	register_sidebar(array(
+		'name'			=> 'Blog Posts',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => '',
+	));
+			
+endif;
+
+if (function_exists('register_sidebar')):
+	register_sidebar(array(
+		'name'			=> 'Footer Info',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => '',
+	));
+			
+endif; 
+
+
+if (function_exists('register_sidebar')):
+	register_sidebar(array(
+		'name'			=> 'Contact Phone',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => '',
+	));
+			
+endif; 
+/*******************************
+ CUSTOM COMMENTS
+********************************/
+
+/**************FOR EXCERPT****************/
+add_action( 'init', 'my_add_excerpts_to_pages' );
+function my_add_excerpts_to_pages() {
+     add_post_type_support( 'page', 'excerpt' );
+}
+/*****************EOF EXCERPT**************************/
+
+/*****************FOR PAGE TAG**************************/
+function add_category_box_on_page(){
+	add_meta_box('categorydiv', __('Categories'), 'post_categories_meta_box', 'page', 'side', 'low');
+	add_meta_box('tagsdiv-post_tag', __('Page Tags'), 'post_tags_meta_box', 'page', 'side', 'low');
+	add_action('save_post', 'affinity_page_cats_tags_save_postdata');
+}
+
+add_action('admin_menu', 'add_category_box_on_page');
+
+function affinity_page_cats_tags_save_postdata( $post_id ) {
+
+	$wpnj_post_type = $_POST['post_type'];
+
+	// verify if this is an auto save routine. If it is our form has not been submitted, so we dont want
+	// to do anything
+	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ){
+
+	}else{
+		// Check permissions
+		if ( 'page' == $wpnj_post_type ) {
+			if ( current_user_can( 'edit_page', $post_id ) ){
+
+				$wpnj_post_cats = array();
+
+				foreach($_REQUEST['post_category'] as $key=>$val){
+					$wpnj_post_cats[] = $val;
+				}
+				wp_set_post_categories( $post_id, $wpnj_post_cats );
+			}
+		}
+	}
+}
+/*******************EOF PAGE TAG********************************/
+
+
+function the_excerpt_max_charlength($charlength) {
+	$excerpt = get_the_excerpt();
+	$charlength++;
+
+	if ( mb_strlen( $excerpt ) > $charlength ) {
+		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+		$exwords = explode( ' ', $subex );
+		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+		if ( $excut < 0 ) {
+			echo mb_substr( $subex, 0, $excut );
+		} else {
+			echo $subex;
+		}
+		echo '[...]';
+	} else {
+		echo $excerpt;
+	}
+}
+
+function getFirstImage() {
+    global $post, $posts;
+    $image = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    $image = $matches [1] [0];
+    if(empty($image)){ // Gets image if no post image;
+        $image = get_bloginfo('template_url')."/images/default_img.jpg"; // Defualt image path
+    }
+    return $image;
+}
+
+function mytheme_comment($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+   <li <?php comment_class('clearfix'); ?> id="li-comment-<?php comment_ID() ?>">
+     <div id="comment-<?php comment_ID(); ?>">
+	  <div class="comment-meta commentmetadata clearfix">
+	   <?php echo get_avatar($comment,$size='36',$default='http://www.gravatar.com/avatar/61a58ec1c1fba116f8424035089b7c71?s=32&d=&r=G' ); ?>
+	   <span> <?php printf(__('<strong>%s</strong>'), get_comment_author_link()) ?><?php edit_comment_link(__('(Edit)'),'  ','') ?> <br /><?php printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?>
+	  </span>
+	  </div>
+	  <div class="commentRight">
+      <div class="text">
+		  <?php comment_text() ?>
+	  </div>  
+
+	  <?php if ($comment->comment_approved == '0') : ?>
+         <em><?php _e('Your comment is awaiting moderation.') ?></em>
+         <br />
+      <?php endif; ?>
+
+      <div class="reply">
+         <?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+      </div>
+	  </div>
+     </div>
+<?php } ?>
