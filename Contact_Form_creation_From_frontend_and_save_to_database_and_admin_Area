@@ -1,0 +1,176 @@
+user_submit_form.php
+
+<?php
+/**
+	Template Name: Form For User
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that
+ * other 'pages' on your WordPress site will use a different template.
+ *
+ * @package WordPress
+ * @subpackage Twenty_Fourteen
+ * @since Twenty Fourteen 1.0
+ */
+get_header(); ?>
+
+<div id="main-content" class="main-content">
+
+<?php
+	if ( is_front_page() && twentyfourteen_has_featured_posts() ) {
+		// Include the featured content template.
+		get_template_part( 'featured-content' );
+	}
+?>
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			<h1 class="headingform">User Form</h1>
+			<div class="msg"></div>
+			<form  class="userform">
+				<p>Name</p>
+				<input type="text" id="username" />
+				<p>Email</p>
+				<input type="email" id="useremail" />
+				<p>Option</p>
+				<select name="" id="useroption">
+					<option value="Option One">Option One</option>
+					<option value="Option Two">Option Two</option>
+					<option value="Option Two">Option Three</option>
+				</select>
+				<textarea name="" id="usercontent" cols="30" rows="10"></textarea>
+				<input  id="usersubmit"type="submit" Value="Submit" />
+			</form>
+
+		</div><!-- #content -->
+	</div><!-- #primary -->
+	<?php get_sidebar( 'content' ); ?>
+</div><!-- #main-content -->
+
+<?php
+get_sidebar();
+get_footer();
+
+
+//function.php
+
+
+<?php
+function childtheme_style_andscripts(){
+	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_script('ajax-function',  get_stylesheet_directory_uri() . '/js/ajaxfunction.js', array('jquery'), '1.0', true );
+	wp_localize_script( 'ajax-function', 'usersubmitform', array(
+		'url'=> admin_url('admin-ajax.php'),
+		'security'=> wp_create_nonce('our-nonce')
+	) );
+}
+add_action('wp_enqueue_scripts','childtheme_style_andscripts');
+function form_action_function(){
+	$data = $_POST['data'];
+	
+	if( !check_ajax_referer('our-nonce', 'security' ) ){
+		
+		wp_send_json_error('security failed');
+		
+		return;
+		
+	}
+	
+	//var_dump($data);
+	
+	$post_id = wp_insert_post (
+	array(
+		'post_type'=>'post',
+		'post_status'=>'draft',
+		'post_content'=>$data['content'],
+		'post_title'=>$data['name'],
+	
+	),
+	
+	 
+	true
+	
+	);
+	
+	if($post_id){
+	update_post_meta($post_id, '_user_metabox_post',$data['email']);
+	wp_set_object_terms($post_id, $data['option'], 'category' );
+	}
+	
+	echo 'From Submitted Successfully';
+	
+	
+	die();
+}
+add_action('wp_ajax_nopriv_form_action_function','form_action_function');
+add_action('wp_ajax_form_action_function','form_action_function');
+
+
+//style.css
+
+/*
+Theme Name: Child of twentyfourteen
+Template: twentyfourteen
+*/
+
+.userform{
+	display:block;
+	
+}
+.userform textarea{
+	width:300px;
+	height:250px;
+}
+.userform input, .userform p, .userform select, .userform input[type="submit"], .userform textarea,  h1.headingform{
+	display:block;
+	margin:10px 100px;
+	
+}
+
+//ajaxfunction.js
+
+jQuery(document).ready(function($){
+	
+	var submitButton = document.getElementById('usersubmit');
+	
+	var ajaxFunctionformprocess = function(fromdata, action){
+		$.ajax({
+			type:'post',
+			url: usersubmitform.url,
+			data:{
+				action:action,
+				data:fromdata,
+				security:usersubmitform.security,
+				
+				
+				
+			},
+			success:function(reponse){
+				$('div.msg').html(reponse);
+			},
+			error:function(response){
+				alert(response);
+			}
+			
+			
+		});
+		
+		
+		
+	}
+	
+	submitButton.addEventListener('click', function(event){
+		event.preventDefault();
+		var fromdata = {
+			'name':document.getElementById('username').value,
+			'email':document.getElementById('useremail').value,
+			'option':document.getElementById('useroption').value,
+			'content':document.getElementById('usercontent').value,
+			
+			
+		};
+		ajaxFunctionformprocess(fromdata, 'form_action_function');	
+			
+		});
+		
+});
