@@ -50,5 +50,15 @@ function eshopper_woocommerce_support() {
   
 10. Now Template is ovewrite check
    go to archive-product page and modify title with some hard text, then check the file will overwritten. 
+11. Now create header.php, footer.php and index.php include these file in other file whenever required.
+
+12. Time for Shop Page Customization (archive-product.php).
+13. When customization the woocommerce style doesn't support, because of woocommerce support nested wise style
+    format:  .woocommerce .product .ul li a{}
+    
+14. Include global body class in body tag: <?php body_class(); ?>
+15. Now we can create globle wrapper woocommerce/global/wrapper-start.php and woocommerce/global/wrapper-end.php 
+	wrapper-start.php: echo '<div id="container"><div id="content" role="main">'; 
+    wrapper-end.php: echo '</div></div>';
 
 
