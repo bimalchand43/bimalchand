@@ -122,4 +122,13 @@ function eshoppere_widgets_init() {
 	
 }
 
+20. After Register call sidebar widget in sidebar section
+
+<?php if ( is_active_sidebar( 'sidebar-shop' ) ) : ?>
+<?php dynamic_sidebar( 'sidebar-shop' ); ?>
+<?php endif; ?>
+
+21. Put Appropriate widget in sidebar section as per requirement (Woocommerce Ajax product filter: Advance ajax product filter) and download and upload and activate.
+
+
 
