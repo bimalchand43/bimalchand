@@ -131,6 +131,21 @@ function eshoppere_widgets_init() {
 21. Put Appropriate widget in sidebar section as per requirement (Woocommerce Ajax product filter: Advance ajax product filter) and download and upload and activate.
 22. Customize Add to cart button. Go to file and search function "woocommerce_template_loop_add_to_cart" copy from content-product and this function exist in plugin folder /plugin/woocommerce/includes/wc-template-functions.php
     and this function return data to our overwrite template function which exist in /themename/woocommerce/loop/add-to-cart.php and add icon near the %s symbol.
+    global $product;
+
+echo apply_filters( 'woocommerce_loop_add_to_cart_link',
+	sprintf( '<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><i class="fa fa-shopping-cart"></i> %s</a>',
+		esc_url( $product->add_to_cart_url() ),
+		esc_attr( isset( $quantity ) ? $quantity : 1 ),
+		esc_attr( $product->id ),
+		esc_attr( $product->get_sku() ),
+		esc_attr( isset( $class ) ? $class : 'button' ),
+		esc_html( $product->add_to_cart_text() )
+	),
+$product );
+
+23. Customization of single-product.php file and div class as per design and style.
+24.
 
 
 
