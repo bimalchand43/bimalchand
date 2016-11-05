@@ -145,7 +145,25 @@ echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 $product );
 
 23. Customization of single-product.php file and div class as per design and style.
-24.
+24. Single Product Image customization(Slider):
+	-go to content-single-product.php
+	-copy function woocommerce_show_product_images and search where it exist in plugin file.
+	-it exist in /plugin/woocommerce/includes/wc-template-functions.php.It is here
+		if ( ! function_exists( 'woocommerce_show_product_images' ) ) {
+
+	/**
+	 * Output the product image before the single product summary.
+	 *
+	 * @subpackage	Product
+	 */
+	function woocommerce_show_product_images() {
+		wc_get_template( 'single-product/product-image.php' );
+		}
+	}
+	-this function back to you exists in theme woocommerce folder that is wc_get_template( 'single-product/product-image.php' );
+	-In product-image.php file, the function "woocommerce_product_thumbnails" function exists and find it.
+	-
+	
 
 
 
