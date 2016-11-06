@@ -1,3 +1,13 @@
+//Woocommerce Shortcode To fetch related items in home page
+
+[recent_products]
+[featured_products]
+[products]
+[product_category]
+[sale_products]
+[top_rated_products]
+[product_attribute]
+[related_products]
 
 //wordpress maximum upload file size htaccess Method
 
