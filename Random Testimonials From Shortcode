@@ -1,0 +1,41 @@
+//Function.php
+
+add_shortcode( 'list-random-testimonial', 'rmcc_post_listing_shortcode1' );
+
+function rmcc_post_listing_shortcode1( $atts ) {
+    ob_start();
+    $query = new WP_Query( array(
+        'post_type' => 'testimonials',
+        'posts_per_page' => 1,
+        'orderby' => 'rand',
+
+    ) );
+    if ( $query->have_posts() ) { ?>
+			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                <div class="row random">
+                    <div class="col-sm-12">
+                        <div class="random-testimonial">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="inner_testimonial_text">
+                                        <p class="client_view"><?php echo get_the_content();?></p>
+                                        <div class="client_info">
+                                        	   <i><?php the_title(); ?></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 small_screen_center">
+                                    <div class="inner_testimonail_img">
+                                        <?php echo do_shortcode('[image-resize width=245 height=245 ref=h]');?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--col-sm-12-->
+                </div><!--row-->
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+    <?php $myvariable = ob_get_clean();
+    return $myvariable;
+    }
+}
