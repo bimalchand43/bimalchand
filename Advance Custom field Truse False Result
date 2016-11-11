@@ -1,0 +1,7 @@
+ <?php
+$is_cloud_sidebar = get_field('is_cloud_sidebar');
+if ($is_cloud_sidebar == 1) { ?>
+<?php get_sidebar('cloudservice');?> 
+<?php }else{ ?>
+<?php get_sidebar();?> 
+<?php } ?>
