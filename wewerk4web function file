@@ -83,6 +83,30 @@ function my_add_excerpts_to_pages() {
 }
 /*****************EOF EXCERPT**************************/
 
+/****************menu downarrow*********************************/
+add_filter( 'wp_nav_menu_objects', 'add_menu_parent_class' );
+
+function add_menu_parent_class( $items ) {
+    $parents = array();
+    foreach ( $items as $item ) {
+        //Check if the item is a parent item
+        if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
+            $parents[] = $item->menu_item_parent;
+        }
+    }
+
+    foreach ( $items as $item ) {
+        if ( in_array( $item->ID, $parents ) ) {
+
+            //Add "menu-parent-item" class to parents
+
+            $item->classes[] = 'content'; 
+        }
+    }
+return $items;    
+}
+/*****************menudownarrow*****************************/
+
 /*****************FOR PAGE TAG**************************/
 function add_category_box_on_page(){
 	add_meta_box('categorydiv', __('Categories'), 'post_categories_meta_box', 'page', 'side', 'low');
