@@ -51,3 +51,152 @@ $(document).ready(function(){
 
 Icon Link   https://developer.wordpress.org/resource/dashicons/#no
 http://elusiveicons.com/icons/
+
+
+
+<script>
+	jQuery(document).ready(function ($) {
+	 $(".quiz_common").hide();
+ $('input[type="radio"]').click(function(){
+     //lert("ok");
+        if($(this).attr("class")=="owner1"){
+            $(".quiz_common").not(".quiz1").hide();
+            $(".quiz1").show();
+            
+        }
+        if($(this).attr("class")=="owner2"){
+            $(".quiz_common").not(".quiz2").hide();
+            $(".quiz2").show();
+        }
+        
+        if($(this).attr("class")=="bookkeeping1"){
+            $(".quiz_common").not(".quiz3").hide();
+            $(".quiz3").show();
+        }
+        if($(this).attr("class")=="bookkeeping2"){
+            $(".quiz_common").not(".quiz4").hide();
+            $(".quiz4").show();
+        }
+        
+        if($(this).attr("class")=="payable1"){
+            $(".quiz_common").not(".quiz5").hide();
+            $(".quiz5").show();
+        }
+        if($(this).attr("class")=="payable2"){
+            $(".quiz_common").not(".quiz6").hide();
+            $(".quiz6").show();
+        }
+        
+        if($(this).attr("class")=="cashflow1"){
+            $(".quiz_common").not(".quiz7").hide();
+            $(".quiz7").show();
+        }
+        if($(this).attr("class")=="cashflow2"){
+            $(".quiz_common").not(".quiz8").hide();
+            $(".quiz8").show();
+        }
+        
+        if($(this).attr("class")=="invoicing1"){
+            $(".quiz_common").not(".quiz9").hide();
+            $(".quiz9").show();
+        }
+        if($(this).attr("class")=="invoicing2"){
+            $(".quiz_common").not(".quiz10").hide();
+            $(".quiz10").show();
+        }
+         if($(this).attr("class")=="payroll1"){
+            $(".quiz_common").not(".quiz11").hide();
+            $(".quiz11").show();
+        }
+        if($(this).attr("class")=="payroll2"){
+            $(".quiz_common").not(".quiz12").hide();
+            $(".quiz12").show();
+        }
+        
+        if($(this).attr("class")=="pay1"){
+            $(".quiz_common").not(".quiz13").hide();
+            $(".quiz13").show();
+        }
+        if($(this).attr("class")=="pay2"){
+            $(".quiz_common").not(".quiz14").hide();
+            $(".quiz14").show();
+        }
+    });
+    
+ $('button.next').click(function(e){
+    e.preventDefault();
+        if( $("#qn_1").css('display') == 'block') {
+            $("ol.carousel-indicators li.next1").addClass('owner');
+            
+        }
+         if( $("#qn_1").css('display') == 'block') {
+            //alert("ok");
+            $("ol.carousel-indicators li.next1").addClass('owner');
+        }
+        
+         if( $("#qn_2").css('display') == 'block') {
+            //alert("ok");
+            $("ol.carousel-indicators li.next2").addClass('bookkeeping');
+        }
+        if( $("#qn_2").css('display') == 'block') {
+            //alert("ok");
+            $("ol.carousel-indicators li.next2").addClass('bookkeeping');
+        }
+        
+         if( $("#qn_3").css('display') == 'block') {
+            $("ol.carousel-indicators li.next3").addClass('payable');
+        }
+        if( $("#qn_3").css('display') == 'block') {
+            $("ol.carousel-indicators li.next3").addClass('payable');
+        }
+        
+         if( $("#qn_4").css('display') == 'block') {
+            $("ol.carousel-indicators li.next4").addClass('cashflow');
+        }
+        if( $("#qn_4").css('display') == 'block') {
+            $("ol.carousel-indicators li.next4").addClass('cashflow');
+        }
+        
+        if( $("#qn_5").css('display') == 'block') {
+            $("ol.carousel-indicators li.next5").addClass('invoicing');
+        }
+        if( $("#qn_5").css('display') == 'block') {
+            $("ol.carousel-indicators li.next5").addClass('invoicing');
+        }
+         if( $("#qn_6").css('display') == 'block') {
+            $("ol.carousel-indicators li.next6").addClass('payroll');
+        }
+         if( $("#qn_6").css('display') == 'block') {
+            $("ol.carousel-indicators li.next6").addClass('payroll');
+        }
+        
+        if( $("#qn_7").css('display') == 'block') {
+            $("ol.carousel-indicators li.next7").addClass('pay');
+        }
+         if( $("#qn_7").css('display') == 'block') {
+            $("ol.carousel-indicators li.next7").addClass('pay');
+        }    
+});
+    
+$('#Citoc_popup_outer').hide();
+$("a.query-links").click(function(event) {
+  event.preventDefault();
+  $(this).parents('#quiz_btn_popupformouter').remove();
+  $('#Citoc_popup_outer').show();
+});
+
+$('ol.custom_indicator li').on('click', function(){
+    $('ol.custom_indicator li').removeClass('selected');
+    //alert("selected");
+    $(this).addClass('selected');
+});
+
+
+$('ol.custom_indicator li').on('click', function(){
+    $('ol.custom_indicator li').removeClass('selected');
+    //alert("selected");
+    $(this).addClass('selected');
+});
+});
+    
+</script>
