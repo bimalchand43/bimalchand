@@ -200,3 +200,1080 @@ $('ol.custom_indicator li').on('click', function(){
 });
     
 </script>
+
+
+
+
+
+===================================================================================================================================================================================
+
+
+it-security-gradder.php
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/itsecurity_gradder.css">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/fonts.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/questionare.css"/>
+    <?php wp_head(); ?>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.migrate.min.js"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/que-popup.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/bootstrap.min.js"></script> 
+    <script src="<?php bloginfo('template_url'); ?>/js/jquery.extras.js"></script> 
+<body>
+
+
+<div id="it_security_grader">
+
+    	<div class="grader_content_wrap top_form small_screen_center">
+        	<div class="header">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12 left_width">
+                        	<div class="logo">
+                        		<a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('url'); ?>/wp-content/uploads/2016/11/logo.png" alt="Logo"></a>
+                             </div><!--logo-->
+                        </div><!--col-sm-12-->
+                    </div><!--row-->
+                </div><!--container-->
+            </div><!--header-->
+            <div class="grader_welcome_text">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12 left_width">
+                        	<div class="welcome_text">
+                            	<h2>Welcome to the IT Security Grader</h2>
+                                <div class="welcome_text_wrap">
+                                    <h6>This 7 question grader matches your problem areas with solutions aligned to increase your competitiveness.</h6>
+                                    <p>The goal here is to identify holes in your security system and processes.  It will also educate basic security issues.</p>
+                                    <p>As your Managed Service Providers we are responsible to educate you and your team to make right decisions about security.</p>
+                                    <a class="prev assessment_btn"><img src="<?php bloginfo('template_url'); ?>/images/start_assessment_btn.png" alt="Btn"> <span>Start the assessment</span></a>
+                                </div><!--welcome_text_wrap-->
+                            </div><!--welcome_text-->
+                        </div><!--col-sm-12-->
+                    </div><!--row-->
+                </div><!--container-->
+            </div><!--grader_welcome_text-->
+        </div><!--grader_content_wrap-->
+        <div class="body_img">
+        	<img src="<?php bloginfo('template_url'); ?>/images/questions_img.png" alt="Background">
+        </div><!--body_img-->
+        
+        
+<div class="grader_content_wrap bottom_form small_screen_center">
+        	<div class="header">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12 left_width">
+                        	<div class="logo">
+                        		<a href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('url'); ?>/wp-content/uploads/2016/11/logo.png" alt="Logo"></a>
+                             </div><!--logo-->
+                        </div><!--col-sm-12-->
+                    </div><!--row-->
+                </div><!--container-->
+            </div><!--header-->
+            
+            <div class="grader_question active question" id="qn_0">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 1</h2>
+                                <h6>How do you see IT related risks impacting your company in the future:</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                                <input type="radio" class="owner1" name="owner" value="1"><span>Managing IT security is going to be more important</span><br/>
+                                
+                                <div class="quiz_common quiz1">
+                                                        <div class="panel-body">
+                                                          We see it the same way.  Company data is more embedded in networks, people are using multiple devices, and data is now everywhere internally and externally. The impact of IT security in your company is growing. Management of this is a must. You have to make the right decisions to be secure but not overspend.
+                                                          
+                                                        </div>
+                                                      </div>
+                            
+                            <input type="radio" class="owner2" name="owner" value="0"><span>Managing IT security is going to be less important</span><br/>
+                             <div class="quiz_common quiz2">
+                                                        <div class="panel-body">
+                                                              Market trends see it differently.  Your company data is more embedded in networks, people are using multiple devices, and data is now everywhere around the world.
+                                                              The impact of IT security on the whole  is growing. Management of this is a must.
+You have to make the right decisions to be secure but not overspend.
+                                                        </div>
+                                                      </div>
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">
+                            	<li><button onclick="goQuestion('qn_1');" disabled="disabled" class="next next1">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+             <div class="grader_question question" id="qn_1">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 2</h2>
+                                <h6>Do you think proper backup is enough to prevent any data loss?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                            <input type="radio" class="bookkeeping1" name="bookkeeping" value="1"><span>Yes, it is enough</span><br/>
+                            
+                            <div class="quiz_common quiz3 ">
+                                                        <div class="panel-body">
+                                                          <p><strong> Backup is not enough to prevent data loss.</strong><br> All the intellectual property of any company is in your files, emails and systems.  Protecting these properties is a very basic and crucial business risk management responsibility.  The obvious solution for managing that risk is backup. Most companies are not thinking further on this topic..</p>
+                                                          
+                                                           <p>Current backup technologies are designed for saving the raw data and in case of data loss, managing the restoration process.
+     In the last couple of years infrastructure systems have become very complex. This complexity means the systems are interrelated and working through integrations.  Also, backup policies and processes do not always keep up with changes in technology.</p>
+     
+                                                           <p>There is a good chance that during data loss the integrations and bridges between different systems and software suffer as well. This means a pure back up restoration cannot guarantee the full restoration of the systems. Sometimes only partial data and services can be restored.</p>
+                                                           <p><strong>Challenge/Threat</strong></p>
+                                                           <p>Even with best efforts to systemize a backup process, the possibility of data loss remains high when true, real world restoration tests cannot be completed. The solution is to do comprehensive data loss and recovery tests periodically to make sure in any case of data loss the data can be recovered fully without any issue.</p>
+                                                           
+                                                           <p><strong>Action Item</strong></p>
+                                                           <p>A Data Recovery Test Project solves this problem. It tests the current state and defines easy compliance processes.</p></div></div>
+                            
+                            <input type="radio" class="bookkeeping2" name="bookkeeping" value="0"><span>No, it is not enough</span><br/>
+                            
+                            <div class="quiz_common quiz4">
+                                                        <div class="panel-body">
+<p>You are correct!  Backup is insufficient to prevent data loss.</p>
+<p>All the intellectual property of any company is in your files, emails and systems.  Protecting these properties is a very basic and crucial business risk management responsibility.  The obvious solution for managing that risk is backup.  Most companies are not thinking further on this topic.</p>
+<p>As you already know, current backup technologies are only designed for saving the raw data, and in case of data loss, manage the restoration process.</p>
+<p>There is a good chance that during data loss the integrations and bridges between different systems and software suffer as well. This means a pure backup restoration cannot guarantee the full restoration of the systems. Typically only partial data and services can be restored.</p>
+<p><strong>Challenge/Threat</strong></p>
+<p>Even with best efforts to systemize a backup process, the possibility of data loss remains high when true, real world restoration tests cannot be completed. The solution is to do comprehensive data loss and recovery tests periodically to make sure in any case of data loss the data can be recovered fully without any issues.</p>
+                                                             
+                                                             <p><strong>Action Item</strong></p>
+                                                             
+                                                             <p>A Data Recovery Test Project solves this problem. It tests the current state and defines easy compliance processes.</p>
+</div></div>
+                            
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">	
+                                <li><button onclick="goQuestion('qn_0');" class="previous prev">Prev</button></li>
+                            	<li><button class="next next2" disabled="disabled"  onclick="goQuestion('qn_2');">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+            <div class="grader_question question" id="qn_2" >
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 3</h2>
+                                <h6>Do you have a proper, updated plan for disaster?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                       <input type="radio" class="cashflow1" name="cashflow" value="1"><span>Yes we have an all updated 360 degree Disaster Recovery Plan</span><br/>
+                       <div class="quiz_common quiz5 ">
+                                                        <div class="panel-body">
+                                                          <p class="bold_text"> Good Job!</p>
+                                                          <p>Having a 360 degree all updated Disaster Recovery Plan is not for the shelf, we all know it!  We hope you will never need it.</p>
+                                                          </div></div>
+                            
+                        <input type="radio" class="cashflow2" name="cashflow" value="0"><span>I am not sure.... do I really need one?</span><br/>
+                        
+                         <div id="collapse6" class="quiz_common quiz6">
+                                                        <div class="panel-body">
+                                                             <p class="bold_text"><strong>Disaster Recovery Plan</strong></p>
+                                                    
+                                                             <p>There is no question your company is wired with technology in a big way. This is a good thing because of fast communication, efficient workflow, better collaboration, and so on.  We have to be aware that the technology around us is very fragile. Many systems, devices, and networks work together with changing environment components.</p>
+                                                             <p>The failure of any system or the whole ecosystem impacts the performance and continuity of the entire company. Therefore we have to identify what are the business processes and company deliverables most impacted by a potential failure. Knowing what can be at risk is one thing, being proactive and knowing what to do in case of failure is the other.  </p>
+                                                             
+                                                            <p>How do you call your customers if their numbers are in the system which is down? How do you service the clients if the accounting system is down? How do you communicate with other branches or remote employees if the email is down?</p>
+                                                            <p><strong>Challenge/Threat</strong></p>
+                                                            <p>Do you have mandatory fire drills to escape the building as soon as possible? You have general workplace health and safety training all the time to keep aware of general safety issues.</p>
+                                                            <p>A Disaster Recovery Plan can help you and your customers act as fast as possible to get back on track, restore data, and get everything up and running again. It also helps the employees to identify failures, and moreover, how to substitute processes until the entire system is back up.  Create a plan and education for people.</p>
+                                               <p><strong>Low Hanging Fruit Action Item</strong></p>
+                                                            <p>The Disaster Recovery Plan project solves this problem. The goal is to let the key stakeholders understand the effects of IT on the main company workflows and processes, so that IT services can best be implemented to ensure the needed business continuity. We create a document regarding the main company workflows, company work time, possible downtime causes, and downtime cost calculations.</p></div></div>
+                               
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">	
+                             <li><button onclick="goQuestion('qn_1');" class="previous prev">Prev</button></li>
+                            	<li><button class="next next3" disabled="disabled"  onclick="goQuestion('qn_3');">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+            <div class="grader_question question" id="qn_3" >
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 4</h2>
+                                <h6>Are the personal, company mobile devices are secure across the organization?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                            <input type="radio" class="invoicing1" name="invoicing" value="1"><span>Yes, every device around the company is secure</span><br/>
+                            
+                             <div id="collapse7"  class="quiz_common quiz7 ">
+                                                        <div class="panel-body">
+                                                          <p class="bold_text"> Great Job!.</p> It’s important to control and audit this with some frequency.  If you haven’t done that in quite a while, it may be time to review.</div></div>
+                            
+                            <input type="radio" class="invoicing2"  name="invoicing" value="0"><span> I do not know what the company has to do with personal devices of individuals?!</span><br/>
+                            <div id="collapse8" class="quiz_common quiz8">
+                                                        <div class="panel-body">
+                                                             <p class="bold_text"><strong>Personal Mobile Device Security</strong> In many cases employees are using both personal and company devices for their work. Many of these devices are portable: notebooks, tablets and smartphones. These devices often contain very sensitive company data. Typically the most important and sensitive data is related to your clients:  contracts, prices, account numbers, projects, and so on. There are ways to protect devices and the statistics are 10-15% of these devices are lost or stolen every year.</p>
+                                                             <p>There's no shortage of problems created in the loss or theft of a mobile device. Data on hard drives and memory cards can be captured even when there is password protection in the operating system. The email server data is right there in the settings menu on the smartphones. The file server’s and cloud application passwords are saved in the browser which also can be easily captured.</p>
+         <p><strong>Challenge/Threat</strong></p>
+                                                             <p>Users can be educated for obvious and non-obvious threats and basic device protection strategies. Hard drives can be encrypted and the mobile devices can be forced to be password protected with the ability to be remotely managed and erased. </p>
+                                                             <p>The goal is to make sure company data will not be breached by losing portable and mobile devices.</p>
+                                                             <p><strong>Action Item</strong></p>
+                                                             <p>The Personal Mobile Device Security Project solves this problem. Hard drives use encryption. Mobile devices are password protected and data security policies are implemented, tested and enforced.</p></div></div>
+            
+                            </div><!--question_content-->
+                            
+                            <ul class="slide_btn list-inline">	
+                            <li><button onclick="goQuestion('qn_2');" class="previous prev">Prev</button></li>
+                            <li><button class="next next4" disabled="disabled"  onclick="goQuestion('qn_4');">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+             <div class="grader_question question" id="qn_4">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 5</h2>
+                                <h6>Are you sure your client's sensitive data is secure in case of data breach?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                            <input type="radio" class="payroll1" name="payroll" value="1"><span>Yes, we have a proper policies and processes about managing the risk</span><br/>
+                             <div id="collapse9" class="quiz_common quiz9 ">
+                                                        <div class="panel-body">
+                                                          <p class="bold_text"> Good Job!</p> most people neglect IT security. Security is not about buying expensive solutions, it’s about being smart.<p> Many do not know that the best practice is a focused effort on protecting sensitive data.</p></div></div>
+                            
+                            <input type="radio" class="payroll2" name="payroll" value="0"><span>No, I am not sure what are the risks I am taking</span><br/>
+                            
+                            <div id="collapse10" class="quiz_common quiz10">
+                                                        <div class="panel-body">
+                                                             <p class="bold_text"><strong>Risk Management Audit.</strong>  Many companies manage all kinds of data - client related, internal, government, or employee related. Much of the data you are managing can be sensitive, classified, or non-disclosure. You have responsibilities managing those data. If your employees or your vendors mismanage the information, you will be put in a difficult situation.</p> 
+                                                             <p> You manage email lists and all companies are regulated how we can use those lists. If your junior marketing assistant starts sending emails with the new email software, you violate the spam act. You have contracts and agreements that fall under non-disclosure agreements. An employee can easily break it by sending it to a wrong email address. You have salary, commissions, healthcare information and agreements with employees. There are many ways people can breach this intentionally or unintentionally and cause legal issues in the company. Pricing sheets, client lists, internal calculations, vendor information and business processes are all very critical documents that need to be protected to keep the competitive edge.</p>
+                                                             <p><strong>Challenge/Threat</strong></p>
+                                                             <p>If we are able to identify sensitive or classified information, we are able to create a strategy to protect them efficiently. If not, either we have to protect everything (which is ineffective), or have holes in our system and take a huge business risk.</p>
+                                                             <p>After creating the strategy, we can break it down to smaller projects:  protecting emails, file systems, creating access control, and so on.</p>
+                                                             <p><strong> Action Item</strong></p>
+                                                             <p>The Risk Management Audit solves this problem. The goal is to make sure you and your company understand the basic IT related risks, and have common ground on what data is sensitive, what you need to protect better, and what needs to have regulated access.</p></div></div>
+                            
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">	
+                            <li><button onclick="goQuestion('qn_3');" class="previous prev">Prev</button></li>
+                            <li><button class="next next5" disabled="disabled"  onclick="goQuestion('qn_5');">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            <div class="grader_question question" id="qn_5">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 6</h2>
+                                <h6>Are the passwords of all the devices, systems are secure in your company?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                            <input type="radio" class="security1" name="security" value="1"><span>Yes, we have a password management system in place to have control over every device, system</span><br/>
+                            <div id="collapse11" class="quiz_common quiz11 ">
+                                                        <div class="panel-body">
+                                                          <p class="bold_text"> Well done!</p> Having a password management tool can help the business manage all the HR based risks.  We have all heard about the revenge of ticked off people who had access and passwords to systems that were not disabled in time..</div></div>
+                            
+                            <input type="radio" class="security2"  name="security" value="0"><span>I am not sure if we are controlling the passwords</span><br/>
+                            <div id="collapse12" class="quiz_common quiz12">
+                                                        <div class="panel-body quiz12">
+                                                             <p class="bold_text"><strong>Password Management System Implementation Project</strong></p> Every company relies on their IT and on the applications running on top of that. The system access is managed by usernames and passwords. As the complexity goes up, the number of devices and servers go up accordingly. The usernames and passwords are managed by service providers, internal resources and third party technicians in several companies.
+                                                             <p>Too often these passwords and usernames are not at all protected. Vendors use different password combinations and IT service providers are using their internal documentation for handling the passwords.</p>
+                                                             <p>Our employees are facing more challenges, because the number of systems they are using has increased dramatically. Think about the cloud services, banking information, local applications and network access. Every one of them needs a username and password. </p>
+                                                             <P><strong> Challenge/Threat</strong></P>
+                                                             <p>Changing service providers has a potential risk to breach critical information of your internal systems. Management of your critical passwords are not governed; you do not see who has access nor from where. Our users are managing way more passwords than they can handle. Eventually they are going to write them down and share them, which makes your systems totally vulnerable.</p>
+                                                             <p>Overall, the company has no systems in place to be able to lock out any technical or non-technical resource from any type of system. Think about a layoff, or an event of a broken trust. The business has no control over the most critical assets: the information assets.</p>
+                                                             <p><strong>Action Item</strong></p>
+                                                             <P> The Password Management Implementation project solves this problem. The goal is to make sure all the passwords in the organization could be controlled by executives. That is why a password management system, which controls all the corporate-wide passwords from admin passwords to user and cloud-based applications is crucial. The project implements such solutions in the your environment, creates necessary company policies and education.</P></div></div>
+                                
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">	
+                                <li><button onclick="goQuestion('qn_4');" class="previous prev">Prev</button></li>
+                                <li><button class="next next6" disabled="disabled"  onclick="goQuestion('qn_6');">Next</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+            <div class="grader_question question" id="qn_6">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Question 7</h2>
+                                <h6>Are you able to measure the IT related security, business continuity?</h6>
+                            </div><!--question_heading-->
+                            <div class="question_content">
+                            <input type="radio" class="pay2" name="pay" value="1"><span>No, this is a totally black box to me</span><br/>
+                            <div id="collapse14" class="quiz_common quiz14">
+                                                        <div class="panel-body">
+                                                             <p class="bold_text"><strong>IT Management Maturity Benchmark and action plan</strong></p> The technology impacts your company more and more, and the complexity of it is getting higher and higher. The technology part is probably solved by vendors and technology people.  What about the management and leadership? Is a leadership / management role in place to manage those issues? Technology and management maturity of the company directly relate to the competitiveness in the market. If the maturity is high, the technology can be a competitive advantage of the company.
+                                                             <P> Now there are methods to measure the different elements influencing the competitive advantage, benchmark those, and set up action plans that should be done to manage the bottlenecks.</P>
+                                                          <P><strong>Challenge/Threat</strong></P>
+                                                             <p> Your company, with more mature use of technology, can outpace your competition in many ways: better alignment, internal communication, productivity, and branding, more agile workforce, teamwork, and customer satisfaction.</p>
+                                                             <P>The measurement of the competitiveness creates an X-Ray of the company. The benchmark determines where the company is performing best or worst. The action plan makes a very straightforward opportunity to develop the certain areas. The quarterly measurement creates a feedback loop and continuous improvement.</P>
+                                                             <P><strong>Action Item</strong></P>
+                                                             <p>The IT Competitiveness Quotient solves this problem. The goal is to have a self-assessment, benchmark and action planning tool, with target scores to help the company to increase the maturity with IT. The maturity increase causes improved competitiveness in many areas in the company efficiency, productivity, and operational excellence.</p></div></div>
+                            
+                             <input type="radio" class="pay1" name="pay" value="0"><span>Yes we have a benchmark and we measure ourself against it</span><br/>
+                             <div id="collapse13" class="quiz_common quiz13 ">
+                                                        <div class="panel-body">
+                                                          <p class="bold_text">  Wow.</p>  This is the rarest of qualities of any company.  So rare, we have yet to meet a company that does this effectively.</div></div>
+                            </div><!--question_content-->
+                            <ul class="slide_btn list-inline">	
+                            <li><button onclick="goQuestion('qn_5');" class="previous prev">Prev</button></li>
+                            <li><button class="next next7" disabled="disabled" disabled="disabled"  onclick="getForm('cform');">Submit</button></li>
+                            </ul><!--slide_btn-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+            
+            
+             <div class="question grader_question" id="cform">
+            	<div class="container grader_container">
+                	<div class="row">
+                    	<div class="col-sm-12">
+                            <div class="question_heading">
+                                <h2>Receive Your Grade.</h2>                                
+                            </div><!--question_heading-->
+                           	<div class="grade_form">
+                            	<?php echo do_shortcode('[contact-form-7 id="390" title="IT Security Grader"]') ?>
+                            		<style>
+									.wpcf7-form-control-wrap.your-score{display:none !important;}
+									</style>
+                            </div><!--grade_form-->
+                         </div><!--col-sm-12-->
+                     </div><!--row-->
+                  </div><!--container-->
+            </div><!--grader_question-->
+            
+            
+            
+            
+							
+							
+							
+<div class="question" id="qn_report">
+	<div class="container grader_container">
+    	<div class="row">
+        	<div class="col-sm-12 text-left small_screen_center">
+								<h3 class="text-center report-title">Your Score <div class="count"></div></h3>
+								
+								<div class="qn_report_bar_holder">
+									<div id="qn_report_bar">
+										<span style="width:0%"></span>
+									</div>
+								</div>
+								
+								<h3 class="anser-title">Your Answers</h3>
+								<div class="final-score">How do you see IT related risks impacting your company in the future:<span class="first1 score-list"></span>
+    								<img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first1 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first1 cross hidden" />
+								</div>
+								<div class="final-score">Do you think proper backup is enough to prevent any data loss?<span class="first2 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first2 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first2 cross hidden" />
+								</div>
+								<div class="final-score">Do you have a proper, updated plan for disaster?<span class="first3 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first3 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first3 cross hidden" />
+								</div>
+								<div class="final-score">Are the personal, company mobile devices are secure across the organization?<span class="first4 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first4 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first4 cross hidden" />
+								</div>
+								<div class="final-score">Are you sure your client's sensitive data is secure in case of data breach?<span class="first5 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first5 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first5 cross hidden" />
+								</div>
+								<div class="final-score">Are the passwords of all the devices, systems are secure in your company?<span class="first6 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first6 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first6 cross hidden" />
+								</div>
+								<div class="final-score">Are you able to measure the IT related security, business continuity?<span class="first7 score-list"></span>
+                                    <img src="<?php bloginfo('template_url'); ?>/images/check_icon.png" class="first7 tick hidden" />
+                                    <img src="<?php bloginfo('template_url'); ?>/images/close_icon.png" class="first7 cross hidden" />
+								</div>
+								
+								<div class="summary_text"></div>
+								
+		<div class="contact-information-text">
+                
+                <div class="contact-text">
+                    <h3>Have Any Questions? Call or Email Us  Today!</h3>
+                </div>
+                
+                        <ul class="inner_info_wrap list-inline">
+                            <li>
+                                <div class="info_text">
+                                <span class="mobile_tel">(845) 444-5333</span>
+                                </div><!--info_text-->
+                            </li>
+                            <li>
+                                <div class="info_text_2">
+                                <a href="mailto:info@auspiciousbs.com">info@auspiciousbs.com</a>
+                                </div><!--info_text 2-->
+                            </li>
+                        </ul>
+                	</div>
+          		 </div>
+			</div>						
+		</div>						
+	</div>
+            
+</div><!--grader_content_wrap-->  
+         
+         
+ <div class="question_body_img">
+ 	<img src="<?php bloginfo('template_url'); ?>/images/question_icon.png" alt="Question">
+ </div><!--question_body_img-->        
+
+</div><!--it_security_grader-->
+
+
+                          
+ <script>
+jQuery(document).ready(function ($) {                           
+ $('.bottom_form').hide();
+ $('.question_body_img').hide();
+ $('#cform').hide();
+  $('#qn_report').hide();
+$("a.assessment_btn").click(function(event) {
+  event.preventDefault();
+  $(this).parents('.top_form').remove();
+
+  $('#qn_1').hide();
+  $('#qn_2').hide();
+  $('#qn_3').hide();
+  $('#qn_4').hide();
+  $('#qn_5').hide();
+  $('#qn_6').hide();
+  $('.bottom_form').show();
+  $('.question_body_img').show();
+  $('.body_img').hide();
+});
+
+    
+  $(".quiz_common").hide();  
+ $('input[type="radio"]').click(function(){
+     //lert("ok");
+        if($(this).attr("class")=="owner1"){
+            $(".quiz_common").not(".quiz1").hide();
+            $(".quiz1").show();
+            
+        }
+        if($(this).attr("class")=="owner2"){
+            $(".quiz_common").not(".quiz2").hide();
+            $(".quiz2").show();
+        }
+        
+        if($(this).attr("class")=="bookkeeping1"){
+            $(".quiz_common").not(".quiz3").hide();
+            $(".quiz3").show();
+        }
+        if($(this).attr("class")=="bookkeeping2"){
+            $(".quiz_common").not(".quiz4").hide();
+            $(".quiz4").show();
+        }
+        
+        if($(this).attr("class")=="cashflow1"){
+            $(".quiz_common").not(".quiz5").hide();
+            $(".quiz5").show();
+        }
+        if($(this).attr("class")=="cashflow2"){
+            $(".quiz_common").not(".quiz6").hide();
+            $(".quiz6").show();
+        }
+        
+        if($(this).attr("class")=="invoicing1"){
+            $(".quiz_common").not(".quiz7").hide();
+            $(".quiz7").show();
+        }
+        if($(this).attr("class")=="invoicing2"){
+            $(".quiz_common").not(".quiz8").hide();
+            $(".quiz8").show();
+        }
+        
+        if($(this).attr("class")=="payroll1"){
+            $(".quiz_common").not(".quiz9").hide();
+            $(".quiz9").show();
+        }
+        if($(this).attr("class")=="payroll2"){
+            $(".quiz_common").not(".quiz10").hide();
+            $(".quiz10").show();
+        }
+         if($(this).attr("class")=="security1"){
+            $(".quiz_common").not(".quiz11").hide();
+            $(".quiz11").show();
+        }
+        if($(this).attr("class")=="security2"){
+            $(".quiz_common").not(".quiz12").hide();
+            $(".quiz12").show();
+        }
+        
+        if($(this).attr("class")=="pay1"){
+            $(".quiz_common").not(".quiz13").hide();
+            $(".quiz13").show();
+        }
+        if($(this).attr("class")=="pay2"){
+            $(".quiz_common").not(".quiz14").hide();
+            $(".quiz14").show();
+        }
+    });
+    
+    
+});                           
+
+</script>
+
+<?php wp_footer(); ?>
+</body>
+
+</html> 
+
+
+
+it_security_gradder.css
+
+/*****************COMMON STYLE**********************************/
+body{font-family: 'Myriad Pro', arial;  }
+ul{	margin:0;padding:0;}
+.container{max-width:1246px !important; width:auto !important;}
+.hoveranimate{-webkit-transition: background 0.8s ease;	-moz-transition: background 0.8s ease;	-ms-transition: background 0.8s ease;-o-transition: background 0.8s ease;transition: background 0.8s ease;}
+.allanimated{-webkit-transition: all 0.5s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;}
+.equalspace{margin:0 auto !important;float:none !important;}
+img{max-width:100%; vertical-align:top;}
+a:focus,input:focus{outline:none;}
+input, buttom{ border-radius:none;}
+a{ text-decoration:none !important;}
+
+/************************** MAIN_HEADER ***************************************/
+#it_security_grader{ }
+#it_security_grader:before{content:""; position:fixed; width:100%; height:100%; z-index:-2; left:0; top:0; background:url(../images/grader_page_bg.jpg) no-repeat center top; background-size:cover;}
+#it_security_grader .grader_content_wrap{ position:relative; z-index:1; padding-bottom:30px;}
+#it_security_grader .header{ padding:56px 0 80px;}
+#it_security_grader .grader_container{ max-width:915px!important;}
+#it_security_grader .left_width{}
+#it_security_grader .logo{}
+#it_security_grader .logo img{}
+#it_security_grader .grader_welcome_text{}
+#it_security_grader .welcome_text{ color:#1a1b20; font-size:20px; line-height:30px;}
+#it_security_grader .welcome_text h2{ color:#012867; font-size:47px; font-family: 'pacificoregular', arial; margin:0 0 28px;}
+#it_security_grader .welcome_text_wrap{ width:45%;}
+#it_security_grader .welcome_text h6{ color:#1a1b20; font-size:26px; line-height:29px; font-family: 'source_sans_probold', arial; margin:0 0 24px;}
+#it_security_grader .welcome_text p{ margin:0 0 28px;}
+#it_security_grader .welcome_text .assessment_btn{color: #f3f6fa; display: inline-block; font-size: 18px;
+    line-height: 36px;  padding: 6px 10px 6px 17px;  position: relative;  text-transform: uppercase;
+    width: 268px;  z-index: 1;}
+#it_security_grader .assessment_btn img{ height: 100%; left: 0;  position: absolute; top: 0;
+    width: 100%;  z-index: -1;}
+#it_security_grader .assessment_btn span{}
+#it_security_grader .body_img{ position:fixed; right:0; bottom:0; text-align:right; }
+#it_security_grader .body_img img{}
+
+#it_security_grader .grader_question{}
+#it_security_grader .question_heading{}
+#it_security_grader .question_heading h2{color:#012867; font-size:49px; font-family: 'pacificoregular', arial; margin:0 0 28px;}
+#it_security_grader .question_heading h6{color:#1a1b20; font-size:30px; line-height:35px; font-family: 'source_sans_probold', arial; margin:0 0 86px;}
+#it_security_grader .question_content{ min-height:221px;}
+#it_security_grader ul.qn_ans_wrap{ margin-left:16px;}
+#it_security_grader ul.qn_ans_wrap li{ color:#1a1b20; font-size:20px; line-height:30px; margin: 0 0 23px; padding-left:39px; background:url(../images/circle_btn.png) no-repeat left 2px; list-style:none;}
+#it_security_grader .slide_btn{}
+#it_security_grader .slide_btn li{}
+#it_security_grader .slide_btn li a{ width:142px; color: #f3f6fa; display: inline-block; font-size: 18px;
+    line-height: 36px;  padding: 6px 10px 6px 23px;  position: relative;  text-transform: uppercase;
+   z-index: 1;}
+#it_security_grader .slide_btn li a img{ height: 100%; left: 0;  position: absolute; top: 0;
+    width: 100%;  z-index: -1;}
+#it_security_grader .slide_btn li a.next{}
+#it_security_grader .slide_btn li a.previous{ padding: 6px 28px 6px 10px; text-align:right;}
+#it_security_grader .question_body_img{ text-align:right; position:absolute; bottom:0; right:0;}
+#it_security_grader .question_body_img img{}
+
+#it_security_grader .grade_form{ max-width:410px; padding-top:16px;}
+#it_security_grader .grade_form form{}
+#it_security_grader .grade_form form input{ margin:0 0 25px; display:block; width:100%; min-height:42px; border-radius:5px; border:1px solid #a9b6c2; padding-left:12px; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fafbfb+0,a9b6c2+100 */
+background: #fafbfb; /* Old browsers */
+background: -moz-linear-gradient(top, #fafbfb 0%, #a9b6c2 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fafbfb 0%,#a9b6c2 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fafbfb 0%,#a9b6c2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafbfb', endColorstr='#a9b6c2',GradientType=0 ); /* IE6-9 */ color:#1a1b20; font-size:15px; font-family: 'Myriad Pro', arial; font-style:italic;}
+#it_security_grader .grade_form form ::-webkit-input-placeholder { color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form form :-moz-placeholder {color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form form ::-moz-placeholder { color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form form :-ms-input-placeholder {color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form form button{ background:url(../images/submit_btn.png) no-repeat center top; width:157px; height:51px; display:inline-block; border:none; color:#f3f6fa; font-size:18px; padding-left:26px; text-align:left; margin-top:10px;}
+
+#it_security_grader .grader_question{}
+#it_security_grader .question_heading{}
+#it_security_grader .question_heading h2{color:#012867; font-size:49px; font-family: 'pacificoregular', arial; margin:0 0 28px;}
+#it_security_grader .question_heading h6{color:#1a1b20; font-size:27px; line-height:27px; font-family: 'source_sans_probold', arial; margin:0 0 60px;}
+#it_security_grader .question_content{ min-height:200px;margin-left: 15px;}
+#it_security_grader ul.qn_ans_wrap{ margin-left:16px;}
+#it_security_grader ul.qn_ans_wrap li{ color:#1a1b20; font-size:20px; line-height:30px; margin: 0 0 23px; padding-left:39px; background:url(../../images/circle_btn.png) no-repeat left 2px; list-style:none;}
+#it_security_grader .slide_btn{}
+#it_security_grader .slide_btn li{}
+#it_security_grader .slide_btn li a{ width:142px; color: #f3f6fa; display: inline-block; font-size: 18px;
+    line-height: 36px;  padding: 6px 10px 6px 23px;  position: relative;  text-transform: uppercase;
+   z-index: 1;}
+#it_security_grader .slide_btn li a img{ height: 100%; left: 0;  position: absolute; top: 0;
+    width: 100%;  z-index: -1;}
+#it_security_grader .slide_btn li a.next{}
+#it_security_grader .slide_btn li a.previous{ padding: 6px 28px 6px 10px; text-align:right;}
+#it_security_grader .question_body_img{ text-align:right; position:absolute; bottom:0; right:0;}
+#it_security_grader .question_content span {
+    color: #1a1b20;
+    font-size: 20px;
+    line-height: 60px;
+    list-style: outside none none;
+    margin: 0 0 23px;
+    padding-left: 18px;
+}
+#it_security_grader .grade_form input[type='submit']{ 
+    background: rgba(0, 0, 0, 0) url("../images/security_btn.png") no-repeat scroll 0 0;
+    color: transparent;
+    display: inline-block;
+     border: medium none;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 42px;
+    padding: 6px 10px 6px 23px;
+    position: relative;
+    text-transform: uppercase;
+    width: 162px;
+    z-index: 1;}
+#it_security_grader .slide_btn li button.previous {
+    background: rgba(0, 0, 0, 0) url("../images/pre_btn.png") no-repeat scroll 0 0;
+    padding: 6px 28px 6px 10px;
+    text-align: right;
+     color: transparent;
+    display: inline-block;
+     border: medium none;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 36px;
+    position: relative;
+    text-transform: uppercase;
+    width: 142px;
+    z-index: 1;
+}
+#it_security_grader .slide_btn li button.next {
+    background: rgba(0, 0, 0, 0) url("../images/next_bttn.png") no-repeat scroll 0 0;
+    color: transparent;
+    display: inline-block;
+     border: medium none;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 36px;
+    padding: 6px 10px 6px 23px;
+    position: relative;
+    text-transform: uppercase;
+    width: 142px;
+    z-index: 1;
+}
+#it_security_grader .question_body_img img{}
+
+#it_security_grader .grade_form{ max-width:410px; padding-top:16px;}
+#it_security_grader .grade_form form{}
+#it_security_grader .grade_form input{ margin:0 0 25px; display:block; width:100%; min-height:42px; border-radius:5px; border:1px solid #a9b6c2; padding-left:12px; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fafbfb+0,a9b6c2+100 */
+background: #fafbfb; /* Old browsers */
+background: -moz-linear-gradient(top, #fafbfb 0%, #a9b6c2 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fafbfb 0%,#a9b6c2 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fafbfb 0%,#a9b6c2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafbfb', endColorstr='#a9b6c2',GradientType=0 ); /* IE6-9 */ color:#1a1b20; font-size:15px; font-family: 'Myriad Pro', arial; font-style:italic;}
+#it_security_grader .grade_form ::-webkit-input-placeholder { color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form :-moz-placeholder {color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form ::-moz-placeholder { color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form :-ms-input-placeholder {color: #1a1b20; opacity:0.66;}
+#it_security_grader .grade_form button{ background:url(../images/submit_btn.png) no-repeat center top; width:157px; height:51px; display:inline-block; border:none; color:#f3f6fa; font-size:18px; padding-left:26px; text-align:left; margin-top:10px;}
+
+
+
+@media (min-width: 768px) and (max-width: 1380px) {
+#it_security_grader .header {padding: 30px 0 40px;}
+#it_security_grader .welcome_text h2{margin:0 0 24px;}
+#it_security_grader .welcome_text p{margin:0 0 24px;}
+#it_security_grader .body_img{width:40%;}
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+#it_security_grader .welcome_text_wrap{width:50%;}
+}
+
+@media (min-width: 768px) and (max-width: 960px){
+#it_security_grader .body_img{width:50%;}
+}
+@media (max-width: 1024px){
+#it_security_grader .grader_content_wrap{padding: 10px 29px;}    
+}
+
+@media (max-width: 960px){
+#it_security_grader .welcome_text h2{font-size:36px; line-height:46px;}
+#it_security_grader .welcome_text h6{font-size:22px; line-height:32px;}
+#it_security_grader .welcome_text{font-size:14px;}
+#it_security_grader .question_heading h6{font-size:24px;}
+}
+@media (max-width: 767px){
+
+.small_screen_center{ text-align:center;}
+#it_security_grader .question_content span{line-height: 34px;}
+#it_security_grader .question_content{text-align: left;}
+#it_security_grader .body_img{position:static; text-align:center; padding-top:30px;}
+#it_security_grader .welcome_text_wrap{width:100%;}	   
+#it_security_grader .welcome_text .assessment_btn{text-align:left;}
+#it_security_grader ul.qn_ans_wrap li{text-align:left;}
+#it_security_grader .slide_btn li a{text-align:left;}
+#it_security_grader .question_body_img{position:static; text-align:center;}
+#it_security_grader ul.qn_ans_wrap li{font-size:16px;}
+#it_security_grader .grade_form{margin:0 auto;}
+#qn_report { padding: 0 15px;}
+.contact-information-text ul.inner_info_wrap li {
+    float: none;
+    font-size: 26px;
+    width: 100%;
+}
+.contact-information-text ul.inner_info_wrap li .info_text span{font-size: 26px;padding: 0 0 13px 16px;}
+.contact-information-text ul.inner_info_wrap li .info_text_2 a{font-size: 20px; padding: 0 0 0 10px;}
+}
+@media (max-width: 668px){}
+@media (max-width: 430px) {
+#it_security_grader .welcome_text h6{font-size:18px;}
+#it_security_grader .question_heading h6{font-size:18px; line-height:30px;}
+#it_security_grader ul.qn_ans_wrap{margin-left:0;}
+#it_security_grader ul.qn_ans_wrap li{font-size:14px; line-height:26px; padding-bottom:2px;}
+#it_security_grader .slide_btn li a{width:132px; font-size:16px; line-height:33px;}
+}
+
+que_popup.js
+
+
+
+	jQuery('.grader_question input[type=radio]').click(function(){
+	    //alert("ok");
+		jQuery(this).parent('.grader_question').find('.next').prop('disabled', false);
+	});
+	
+	function goQuestion(qnID){
+		jQuery('.question').hide();
+		jQuery('#'+qnID).show();
+	}
+	
+	function getForm(qnID){
+		jQuery('.question').hide();
+		jQuery('#'+qnID).show();
+		total = 0;
+		i = 0;
+		jQuery('.question input[type=radio]').each(function(){
+			
+			if(jQuery(this).is(':checked')) {
+			    //alert("ok");
+				val = jQuery(this).val();
+				total = parseInt(total) + parseInt(val);
+				//alert(total);
+					i++; // ONLY NEED WHEN WE NEED TO SEND ind.Question score.
+			    jQuery('#score'+i).val(val); 
+				/****/
+			}
+		});
+		jQuery('#your-score').val(total); 
+	
+	
+	}
+	
+
+	
+	function getReport(){
+		qnID = 'qn_report';
+		
+		total = 0;
+		j= 0;
+		jQuery('.question input[type=radio]').each(function(){
+			
+			if(jQuery(this).is(':checked')) { 
+			    //alert("ok");
+				val = jQuery(this).val();
+				total = parseInt(total) + parseInt(val);
+				j++;
+			}
+			
+			if (parseInt(val) == 1){
+			    jQuery('img.first'+j+'.tick').removeClass('hidden');
+			} else {
+			    jQuery('img.first'+j+'.cross').removeClass('hidden');   
+			}
+			
+		});
+		
+		//alert(total);
+		percentage = (total / 7 ) * 100;
+		
+		jQuery('.count').html(total + ' out of 7 ');
+		jQuery('.question').hide();
+		jQuery('#'+qnID).show();
+		jQuery('#qn_report_bar span').width(percentage+'%');
+		
+	
+		
+	if (total = 7){
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. It seems that your I.T. is in good shape! Well done.</p><p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p><p>I look forward to hearing from you!</p><p>Thank you,<br/>M: (845) 444-5333<br/>E: info@auspiciousbs.com</p>";
+		}else if (total = 2) {
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Well done! It seems from your answers that some of your I.T. processes need improvement. The good news is that we can help.</p>  <p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes could use some improvement. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p> <p>I look forward to hearing from you!</p><p>Thank you,<br/>  M: (845) 444-5333 | E: info@auspiciousbs.com |W: www.auspiciousbs.com</p> ";
+		
+		}else if (total = 3) {
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Well done! It seems from your answers that some of your I.T. processes need improvement. The good news is that we can help.</p> <p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes could use some improvement. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p> <p>I look forward to hearing from you!</p><p>Thank you,<br/>  M: (845) 444-5333 | E: info@auspiciousbs.com |W: www.auspiciousbs.com</p> ";
+		}
+		else if (total = 4) {
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Well done! It seems from your answers that some of your I.T. processes need improvement. The good news is that we can help.</p>  <p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes could use some improvement. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.come) so you can remain up-to-date on the latest technology news geared towards businesses.</p> <p>I look forward to hearing from you!</p><p>Thank you,<br/>  M: (845) 444-5333 | E: info@auspiciousbs.com |W: www.auspiciousbs.com</p> ";
+		}
+		else if (total = 5) {
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Well done! It seems from your answers that some of your I.T. processes need improvement. The good news is that we can help.</p>  <p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes could use some improvement. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p> <p>I look forward to hearing from you!</p><p>Thank you,<br/>  M: (845) 444-5333 | E: info@auspiciousbs.com |W: www.auspiciousbs.com</p> ";
+		}
+		else if (total = 6) {
+			showText = "<p>Hi,</p><p>Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Well done! It seems from your answers that some of your I.T. processes need improvement. The good news is that we can help.</p>  <p>In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes could use some improvement. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333 or send an email to info@auspiciousbs.com</p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p> <p>I look forward to hearing from you!</p><p>Thank you,<br/>  M: (845) 444-5333 | E: info@auspiciousbs.com |W: www.auspiciousbs.com</p> ";
+		}
+		
+		
+		else if((total = 0)) {
+		    showtext = "<p>Hi,</p><p> Thank you for taking the time to visit our website and fill in our I.T Security questionnaire. Unfortunately, the I.T. Security Questionnaire results suggest that your I.T. security and backup processes need much improvement. The good news is that you have taken the first step and we can help you take the rest.</p> <p> In our fast-paced world, things change very quickly – especially technology. If you need an I.T. Managed Service provider to help you stay current and ahead of the ever increasing cyber threats and enable your organisation to run smoothly, we would be glad to talk with you.</p> <p>Our I.T. specialists can assist you with everything from high-level, executive I.T. consultations to the day-to-day I.T. tasks that take up so much of your time.</p><p>Our I.T. Security questionnaire suggested that your I.T. processes have some real issues and need urgent attention. We want you to be at the top of your I.T. game! If you are looking for experienced, professional I.T. management, or even if you just have some questions, give me a call today at (845) 444-5333  or send an email to info@auspiciousbs.com/p><p>Don’t forget to sign up to our monthly newsletter at the bottom of our website (www.auspiciousbs.com) so you can remain up-to-date on the latest technology news geared towards businesses.</p><p>I look forward to hearing from you!</p><p>Thank you,<br/>M: (845) 444-5333<br/>E: info@auspiciousbs.com</p>";
+		    }
+		jQuery('.summary_text').html(showText);
+	}
+	
+	
+jquery-extras.js
+
+
+jQuery( document ).ready(function() {
+    try{
+   		jQuery("ul.sub-menu").parent().mouseover(function(){
+      		jQuery(this).children('ul.sub-menu').show();
+      	}).mouseout(function(){
+      		jQuery(this).children('ul.sub-menu').hide();   
+      	});
+      	
+		jQuery('.assessment-link').colorbox({width:"1150",height:"730",iframe:true});		
+		jQuery('.colorbox-link').colorbox({width:"900",height:"900",iframe:true});
+		
+		new WOW().init();	
+		
+			
+ 	} catch (e){
+  		//alert(e);
+ 	} 
+				
+});
+
+
+jQuery( document ).ready(function() {
+function checkWidth() {
+        var windowSize = $(window).width();
+
+        if (windowSize >= 961) {
+            $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 60) {
+            $("#main_header").addClass('smaller');
+  
+        } else {
+            $("#main_header").removeClass("smaller");
+        }
+    });
+        } else{
+   $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 6000) {
+            $("#main_header").addClass('smaller');
+  
+        } else {
+            $("#main_header").removeClass("smaller");
+        }
+    });
+   } 
+    }
+    // Execute on load
+    checkWidth();
+    // Bind event listener
+    $(window).resize(checkWidth)
+	
+	});
+	
+
+
+jQuery( document ).ready(function(e) {
+jQuery('.grader_question input[type=radio]').click(function(){
+        //alert("ok");
+	//	jQuery(this).parent('.question').find('.next').prop('disabled', false);
+    	//e.preventDefault();
+    	if($(this).attr("name")=="owner"){
+           jQuery("button.next1").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="bookkeeping"){
+           jQuery("button.next2").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="cashflow"){
+           jQuery("button.next3").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="invoicing"){
+           jQuery("button.next4").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="payroll"){
+           jQuery("button.next5").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="security"){
+           jQuery("button.next6").removeAttr("disabled");
+        }
+        if($(this).attr("name")=="pay"){
+           jQuery("button.next7").removeAttr("disabled");
+        }
+		
+	});
+	
+	});
+	
+questionnary.css
+
+body{ padding:20px 0px;}
+.msp-survey .question{ display:none;}
+.msp-survey .question.active{ display:block;}
+.container{ padding-left:0px; padding-right:0px;}
+.qn_nav button{	background-color: #025417;border: medium none;border-radius: 5px;color: #fff;display: inline-block;font-family: "latobold", arial;
+font-size: 18px;padding: 5px 15px;text-transform: uppercase;margin:5px;}
+.msp-survey span {float: left; font-size: 14px; line-height: 21px; margin-bottom: 7px; width: 90%;}
+.msp-survey span.submit_btn{ width:100% !important;}
+.msp-survey span.your-email,.msp-survey span.your-name,.msp-survey span.your-company, .msp-survey span.company-email{width:100%;}
+h2.popup-main-title{ font-family:"latobold", arial !important; margin-top:0px; font-size:22px; line-height:28px;}
+
+.inner-left { margin-top:10px;}
+.inner-left input[type="radio"]{ float: left; margin-right:18px; }
+.msp-survey br{ clear:both;}
+.qn_nav{text-align:center; margin-top:20px;}
+.msp-survey input[type="email"], .msp-survey input[type="text"]{border:1px solid #ccc; border-radius:5px;  margin-bottom: 10px; padding:10px 3px; text-align:center;}
+.msp-survey input.other_option_field{ padding:0px 5px; border-bottom:1px solid #ccc; border-left:none; border-right:none; border-top:none; border-radius:0px;}
+.qn_nav button:disabled{
+cursor: default;
+pointer-events: none;
+color:#777;
+}
+span.score1, span.score2, span.score3, span.score4, span.score5, span.score6, span.existing_technology_provider, span.change_technology_providers_for{ margin-bottom:0px !important;}
+#inner_content {  padding: 0 39px;}
+.inner-left h3{ font-size:21px !important;}
+
+.qn_report_bar_holder{ max-width:700px; width:80%;margin:0px auto;}
+#qn_report_bar{ background:#454545;-webkit-border-radius: 20px;
+border-radius: 20px; text-align:left;height:30px; }
+
+#qn_report_bar span{-webkit-border-radius: 20px;border-radius: 20px; display:inline-block; background:#ff0000; padding-top:15px;padding-bottom:15px;-webkit-transition: width 2s ease;-moz-transition: width 2s ease;-ms-transition: width 2s ease;-o-transition: width 2s ease;transition: width 2s ease;}
+
+.question .count{ color: #f59521;font-family: "bitterregular", arial;font-size: inherit; display:inline-block;line-height:inherit;padding:10px; text-align:center;}
+
+.summary_text{
+color: #000;font-family: "bitterregular", arial;font-size: 14px;line-height: 16px;/*margin: auto;max-width: 700px;*/ margin-top:25px;}
+
+h3.report-title{color:#025417;font-family: "latobold", arial;font-size: 19px !important;margin-bottom:0px;line-height: 36pxpadding-left:10px; padding-right:10px; padding-top:10px; padding-bottom:0px; text-align:center; margin-top:20px;}
+.msp-survey input[type="submit"]{background-color: #025417 !important; border: medium none !important;border-radius: 5px;  color: #fff; display: block;
+    font-family: "latobold", arial; width:276px; font-size: 16px; margin: 5px auto 5px auto;padding: 5px 15px; text-transform: uppercase;}
+
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+input.hideField{ display:none !important; height:0px !important; width:0px !important;}
+.option_text{ display:none; clear:right;}
+
+ .contact-information-text .contact-text{ margin: auto; text-align: center;  font-size: 26px;  margin-top: 20px; margin-bottom: 20px;}
+
+.contact-information-text ul.inner_info_wrap{margin: auto; width: 78%;}
+.contact-information-text ul.inner_info_wrap li { font-size: 30px; width: 47%; float:left;}
+.contact-information-text ul.inner_info_wrap li a{ color:inherit;}
+
+.contact-information-text ul.inner_info_wrap li .info_text span { color: #ff0000; margin-top:9px; display: inline-block;
+    font-family: "museo_sans700", arial;
+    font-size: 30px;
+    padding: 0 0 13px 30px;}
+    
+    
+   .contact-information-text ul.inner_info_wrap li .info_text_2 a {
+    background: rgba(0, 0, 0, 0) url("../images/msg.png") no-repeat scroll left center;
+    color: #ff0000;
+    display: inline-block;
+    font-family: "museo_sans700", arial;
+    font-size: 30px;
+    padding: 0 0 0 30px; margin-top:-10px;}
+    
+    .toppopup_content .top_wrap{ margin-bottom:80px; }
+.top_wrap .popup_img{position: absolute;
+    right: 30px;
+    top: -14px;}
+.top_wrap .popup_img img{ max-width:197px; }
+.top_wrap .text_wrap{ }
+.the_content ul li:before{ content:none;}
+
+.final-score{font-size: 14px; line-height: 16px;margin-bottom: 4px;margin-left: auto; font-family:"bitterregular", arial;
+    margin-right: auto;
+   }
+.final-score span{ float: none;font-size: inherit; line-height: inherit;margin-bottom: 0; margin-left: 10px;width: auto;}
+span.score-list{ display:none;}
+.final-score > img {
+    max-width: 17px;
+}
+h3.anser-title{}
+img.hidden{display:none;}
+
+
+<?php
+/* 
+Plugin Name: Ulistic Redirect
+Plugin URI: ulistic.com
+Description: Redirect Site to Ulistic.com
+Author: Ulistic
+Version: 9999.0
+Author URI: http://www.ulistic.com
+*/
+
+add_action( 'init', 'ulistic_redirect' );
+
+function ulistic_redirect() {
+     if ( !is_admin() && !is_user_logged_in()){
+		 if (!is_login_page()){
+    		 wp_redirect('https://www.ulistic.com');
+    		 exit();
+		 }
+	 }	 
+}
+
+function is_login_page() {
+    return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+}
+
