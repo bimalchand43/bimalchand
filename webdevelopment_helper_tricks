@@ -1277,3 +1277,21 @@ function is_login_page() {
     return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
 }
 
+
+//adding active class on all submenu iteam and give css for all active class item with jquery
+
+$(document).ready(function(){
+    var url = window.location.pathname, 
+        urlRegExp = new RegExp(url.replace(/\/$/,'') + "$"); // create regexp to match current url pathname and remove trailing slash if present as it could collide with the link in navigation in case trailing slash wasn't present there
+        // now grab every link from the navigation
+        $('ul.sub-menu li a').each(function(){
+            // and test its normalized href against the url pathname regexp
+            if(urlRegExp.test(this.href.replace(/\/$/,''))){
+                $(this).addClass('active');
+            }
+        });
+    
+$(document).ready(function(){
+    $(".slight-submenu-ul li a.active").closest("ul").css("display", "block");     
+});
+
