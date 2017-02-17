@@ -5,3 +5,22 @@ if ($is_cloud_sidebar == 1) { ?>
 <?php }else{ ?>
 <?php get_sidebar();?> 
 <?php } ?>
+
+
+
+
+
+Future Date Tracking
+
+<?php
+$todayDate = date('Y-m-d');
+if (is_home()):
+if ($todayDate ==  '2015-04-24'){ ?>
+    <script>
+    jQuery(document).ready(function(){
+        $.colorbox({width:"900", height:"650",iframe:true, href:"https://www.triadanet.com/april24/"});
+    });
+    </script>
+<?php }
+endif;
+?>
