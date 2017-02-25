@@ -173,7 +173,53 @@ $product );
 	}
 	-this function back to you exists in theme woocommerce folder that is wc_get_template( 'single-product/product-image.php' );
 	-In product-image.php file, the function "woocommerce_product_thumbnails" function exists and find it.
-	-
+	-to customization of sigle product slider:
+	   1. first findout the hook that is where it is from exist.
+	   2. secondly, after find the action hook, then remove it using remove_action('woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20);  
+	   3. after remove action we can hook the customized image carousel funtion to hook the same hook function where remove action hook used that is:
+	      "woocommerce_product_thumbnails" hook using add_action('woocommerce_product_thumbnails','kanchan_eshop_add_carosuelon_product_page')
+	      
+	 add_action('woocommerce_product_thumbnails', 'kanchan_eshop_add_carosuelon_product_page');
+
+function kanchan_eshop_add_carosuelon_product_page(){
+	global $post, $product, $woocommerce;
+
+$attachment_ids = $product->get_gallery_attachment_ids();
+		if($attachment_ids):
+	
+	?>
+						<div id="similar-product" class="carousel slide" data-ride="carousel">
+								
+								  <!-- Wrapper for slides -->
+								    <div class="carousel-inner">
+									<?php 
+										$i = 0;
+										foreach($attachment_ids as $attachment_id ):
+										$image_link = wp_get_attachment_url( $attachment_id );
+										?> <div class="item  <?php if( $i == 0 ){ echo 'active';} ?>">
+										  <img src="<?php echo $image_link;  ?>" alt="">
+										  
+										</div>
+										<?php $i++;  endforeach; ?>
+										
+									</div>
+
+								  <!-- Controls -->
+								  <a class="left item-control" href="#similar-product" data-slide="prev">
+									<i class="fa fa-angle-left"></i>
+								  </a>
+								  <a class="right item-control" href="#similar-product" data-slide="next">
+									<i class="fa fa-angle-right"></i>
+								  </a>
+							</div>
+	<?php
+	
+	endif;
+}
+
+
+
+	      
 
 25. Show cart contents / total in header.
 
@@ -197,6 +243,8 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	
 	return $fragments;
 }
+
+
 
 
 
