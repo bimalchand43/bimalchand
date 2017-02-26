@@ -422,6 +422,7 @@ function eshopper_reorder_tabs( $tabs ) {
 }
 
 
+28. for cart we can use page.php template
 
 
 
