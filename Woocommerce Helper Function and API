@@ -377,6 +377,50 @@ function eshopper_woo_new_product_tab( $tabs ) {
 
 }
 
+-define callback function
+
+
+function woo_new_product_tab_company_profile_content() {
+$brandcontents = wp_get_post_terms( get_the_Id(), 'brand' );
+	// The new tab content
+foreach($brandcontents as $brandcontent ):
+//var_dump($brandcontent);
+//get_term_meta($term->term_id, 'cat_term_img', true );
+if($brandcontent){
+		
+			echo '<h2><b>Brand: </b>'.$brandcontent->name.'</h2>';
+			echo '<img src="'.get_term_meta($brandcontent->term_id, 'cat_term_img', true ).'" alt="" width="200px" height="200px" style="display:block" />';
+			echo '<p style="margin:30px 0;">'.$brandcontent->description.'</p>';
+		
+		}
+	
+endforeach;
+	
+}
+
+// callback function of tags tab
+function woo_new_product_tab_tags_content(){
+	$alltags = wp_get_post_terms( get_the_Id(), 'product_tag' );
+	//var_dump($alltags);
+	echo '<p>';
+	foreach($alltags as $alltag ):
+		echo '<b>'.$alltag->name.'</b> ';
+	endforeach;
+	echo '</p>';
+	
+}
+// eshopper prodyct tad odering 
+
+add_filter( 'woocommerce_product_tabs', 'eshopper_reorder_tabs', 98 );
+function eshopper_reorder_tabs( $tabs ) {
+	$tabs['description']['priority'] = 5;
+	$tabs['company_tab']['priority'] = 10;
+	$tabs['tags_tab']['priority'] = 15;
+	$tabs['reviews']['priority'] = 20;	
+	
+	return $tabs;
+}
+
 
 
 
