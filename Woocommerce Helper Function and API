@@ -244,6 +244,59 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	return $fragments;
 }
 
+26. Geting single product meta field value with custom function
+
+function eshopper_get_sku_after_title(){
+			global $product;
+			$sku = $product->get_sku();
+			$sku_num = ( $sku ? $sku : 'N/A' );
+			?>
+			<div class="custom-sku"> 
+			<?php    _e('Web Id: ', 'eshopper');  echo $sku_num; ?>
+			</div>
+		<?php 
+			
+		}		
+
+add_action('woocommerce_single_product_summary', 'eshopper_get_sku_after_title', 6 );
+
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+function eshopper_product_ava (){
+	global $product;
+	
+	$isstock = ($product->is_in_stock( ) ? 'Yes': 'No');
+	echo '<div class="eshopper-aval">';
+	_e('Availability: ','eshopper' );  echo $isstock;
+	echo '</div>';
+}
+add_action('woocommerce_single_product_summary', 'eshopper_product_ava', 39 );
+
+
+function add_brand_to_product_page(){
+	$all_terms = wp_get_post_terms( get_the_Id(), 'brand' );
+	foreach($all_terms as $term ){
+		if($term->name){
+			echo '<b>Brand: </b>'.$term->name;
+		}
+	}
+	
+}
+
+add_action('woocommerce_single_product_summary', 'add_brand_to_product_page', 45 );
+
+
+function custom_socialshare(){
+	?>
+	<div class="shoiacl-product"> 
+		<a class="btn btn-primary " href=""> <i class="fa fa-facebook"></i> Facebook </a>
+		<a class="btn btn-primary " href=""> <i class="fa fa-google-plus"></i> Google Plus </a>
+		
+	
+	</div>
+	<?php 
+}
+add_action('woocommerce_single_product_summary', 'custom_socialshare', 50 );
+
 
 
 
