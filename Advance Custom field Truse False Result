@@ -24,3 +24,31 @@ if ($todayDate ==  '2015-04-24'){ ?>
 <?php }
 endif;
 ?>
+
+
+//tag based query
+
+<?php 
+query_posts('posts_per_page=-1&category_name=newsletters&tag=2017');
+if ( have_posts() ) : while ( have_posts() ) : the_post();  
+?> 
+
+
+<?php
+endwhile;
+endif;
+//Reset Query
+wp_reset_query();									
+?> 
+
+
+//custom field based query
+
+<?php
+$cnt=0;
+query_posts('posts_per_page=-1&category_name=presentations&meta_key=presentation_date&orderby=meta_value&order=desc');
+if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+$num_of_posts = $wp_query->post_count;
+$backgroundImage = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()));
+$cnt++;
+?>  
