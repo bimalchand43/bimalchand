@@ -3439,3 +3439,15 @@ $(document).ready(function(){
     <div class="blue box">You have selected <strong>blue radio button</strong> so i am here</div>
 </body>
 </html>  
+
+
+//wordpress foreach query 
+
+ <?php
+$args = array('numberposts'=>3, 'category'=>16, 'order'=>'ASC');
+$custom_posts = get_posts($args);
+var_dump($custom_posts);
+foreach($custom_posts as $post) : setup_postdata($post); ?>
+<h2><a href="<?php the_permalink(); ?>"><?php echo $post->post_title; ?></a></h2>
+<?php endforeach;
+ ?>
