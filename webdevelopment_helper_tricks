@@ -1314,3 +1314,173 @@ $(document).ready(function(){
 .carousel-fade .carousel-control {z-index: 2;}
 
 
+
+//video resize in banner
+
+jQuery( document ).ready(function() {
+
+    try{
+		
+	videoResize();
+ 
+
+
+} catch (e){
+
+  		//alert(e);
+
+ 	}   
+	
+});
+
+jQuery(window).resize(function(){
+videoResize();
+});
+
+function videoResize(){
+		var w =  ($(window).width());
+		var h = ($(window).height());
+		$("#home_banner").height(h-50);
+		
+		leaveTop = $('#main_header').height();
+		leaveTopMargin = $('#main_header').height()-100;
+		
+		$('.banner_img').css('top',leaveTopMargin+'px');
+		remainingheight = h - (leaveTop);
+		$('.banner_img .banner_text').height(remainingheight);
+}
+
+
+
+function playIntroVideo()
+{
+    document.getElementById("the-video").play();
+    document.getElementById("the-video").style.display = "block";
+}   
+
+
+
+//masonary with on scroll load
+
+
+function load_posts(category, numPosts){
+		pageNumber = jQuery('#loadmore').attr('rel');
+		url = jQuery('#loadmore').attr('href');
+		jQuery.ajax({
+			type       : "GET",
+			data       : {numPosts : numPosts, pageNumber: pageNumber , category : category},
+			dataType   : "html",
+			url        : url,
+			beforeSend : function(){
+				jQuery('#loadmore').css('visibility','visible');
+				jQuery('.masonry_layout').attr('data-load-status','loading');
+			},
+			success    : function(data){
+				
+				dataCheck = data.replace(/(<([^>]+)>)/ig,"");
+					dataCheck = dataCheck.trim();	
+					if (dataCheck != 'null'){
+							jQuery('#masonry_container').append(data);
+							var container = document.querySelector('#masonry_container');
+							var msnry;
+							imagesLoaded( container, function() {
+							  msnry = new Masonry( container );
+							});
+							jQuery('#loadmore').css('visibility','hidden');
+							pageNumber = parseInt(pageNumber) + 1;
+							jQuery('#loadmore').attr('rel', pageNumber);
+							jQuery('.masonry_layout').attr('data-load-status','ready');
+					} else {
+						jQuery('#loadmore').html('No More Posts');
+						jQuery('#loadmore').css('background');
+					}
+			},
+			error     : function(jqXHR, textStatus, errorThrown) {
+				alert(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+			}
+	});
+}
+
+
+jQuery(window).bind('scroll', function() {
+		if (jQuery('.masonry_layout').attr('data-load-status') == 'ready'){
+    		if(jQuery(window).scrollTop() >= jQuery('.masonry_layout').offset().top + jQuery('.masonry_layout').outerHeight() - window.innerHeight) 			{
+    		  jQuery('#loadmore').trigger('click');
+    		}
+		}
+});
+
+
+
+<?php get_header('category'); ?>
+    
+    <div id="category">
+        <div class="container">
+			<?php
+            $cat = get_query_var('cat');
+            $yourcat = get_category ($cat);
+            if (have_posts()) :  
+            ?>
+
+            <div class="row">
+                <div class="masonry_layout" id="masonry_container"></div>
+            </div><!--row-->
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="post_wrap">
+                        <h2><a href="<?php bloginfo('url'); ?>/wp-content/themes/southwest_ulistic/masonry_ajax_handler.php" rel="1" id="loadmore" onclick="load_posts('<?php echo $yourcat->slug;?>', 6); return false;" class="loadmore"><img src="<?php bloginfo('template_url'); ?>/images/loading_posts.gif" alt="Bischer"></a></h2>
+                        <script>
+                            load_posts('<?php echo $yourcat->slug;?>', 6);
+                        </script>       
+                    </div><!--post_wrap-->
+                </div><!--col-sm-12-->
+            </div><!--row-->
+			<?php wp_reset_query(); else: ?>
+                <p>No Posts Available</p>
+            <?php endif; ?>
+        </div><!--container-->
+    </div><!--category-->
+    
+<?php get_footer(); ?>
+
+
+
+
+<?php 
+// Our include
+define('WP_USE_THEMES', false);
+require_once('../../../wp-load.php');
+// Our variables
+$numPosts = (isset($_GET['numPosts'])) ? $_GET['numPosts'] : 0;
+$page = (isset($_GET['pageNumber'])) ? $_GET['pageNumber'] : 0;
+query_posts(array(
+       'posts_per_page' => $numPosts,
+       'paged'          => $page,
+	   'category_name'		=> $_GET['category'] 
+));
+    $cnt=0;								
+	if ( have_posts() ) : while ( have_posts() ) : the_post();
+	$backgroundImage = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()));
+	$cnt ++;
+	?>  
+    
+       <div class="col-sm-4 col_padding">
+                        <div class="blog_container">
+                        <?php if ( has_post_thumbnail()): ?>
+                            <div class="blog_img blog_img<?php echo $cnt; ?>" style="background-image:url(<?php echo $backgroundImage; ?>)">
+                        <?php else: ?>						
+                    <div class="blog_img blog_img<?php echo $cnt; ?>" style="background:url(<?php echo getFirstImage(); ?>) no-repeat center top;">
+                    <?php endif;?> 
+                            </div><!--blog_img-->
+                            <a href="<?php the_permalink() ;?>"><div class="blog_text">
+                                <h1><?php the_title() ;?></h1>
+                            </div><!--blog_text--></a>
+                        </div><!--blog_container-->
+                    </div><!--col-sm-4-->
+
+		<?php endwhile; wp_reset_query(); else : 
+        echo 'null'; 
+    endif; 
+    ?> 
+
+
