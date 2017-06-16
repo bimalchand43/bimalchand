@@ -3451,3 +3451,51 @@ foreach($custom_posts as $post) : setup_postdata($post); ?>
 <h2><a href="<?php the_permalink(); ?>"><?php echo $post->post_title; ?></a></h2>
 <?php endforeach;
  ?>
+ 
+ 
+ ==========================================================
+ 
+ video resize js code
+ 
+    <section id="home_banner">
+        <div class="banner_overlay"></div>
+        <div class="banner-video visible-md visible-lg visible-sm text-center" >
+            <video class="video" loop="" id="the-video" oncanplay="playIntroVideo()">
+                <source src="<?php bloginfo('url'); ?>/videos/banner.mp4">
+                <img src="<?php bloginfo('template_url'); ?>/images/banner_video.jpg" alt="" style="width:100%; height:100%" />
+            </video>
+           
+        </div>
+	</div>
+ 
+$(document).ready(function(){
+     videoResize();
+});	
+ 
+ jQuery(window).resize(function(){
+   videoResize();
+});
+
+function videoResize(){
+		var w =  ($(window).width());
+		var h = ($(window).height());
+		$("#home_banner").height(h);
+		
+		leaveTop = $('#main_header').height();
+		
+		//leaveTop = $('#main_header').height() + 16;
+		//leaveTopMargin = $('#main_header').height()-20;
+		
+		$('#home_banner .banner_wrap').css('top',leaveTop+'px');
+		remainingheight = h - (leaveTop);
+		$('#home_banner .banner_wrap .banner_text').height(remainingheight);
+		$('#home_banner .banner_wrap .banner_text').css('padding-top',leaveTop+'px');
+}
+
+
+
+function playIntroVideo()
+{
+    document.getElementById("the-video").play();
+    document.getElementById("the-video").style.display = "block";
+}  
