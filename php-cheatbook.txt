@@ -3467,6 +3467,45 @@ foreach($custom_posts as $post) : setup_postdata($post); ?>
            
         </div>
 	</div>
+	
+//css
+
+#home_banner {
+     background: url("images/banner_video.jpg");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size:cover;
+    overflow: hidden;
+    position: relative;
+}
+#home_banner .banner_overlay{
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1;    
+}
+#home_banner video {
+    
+     -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+}
  
 $(document).ready(function(){
      videoResize();
