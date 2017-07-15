@@ -651,6 +651,49 @@ wc_print_notice( $notice, 'notice' );
 add_action( '<a href="#">woocommerce</a>_before_cart', 'bbloomer_free_shipping_cart_notice_zones' );
 
 
+//WooCommerce PHP Snippet: Display Total Discount Amount / Total Savings @ Cart & Checkout
+
+/**
+* @snippet Display Total Discount / Savings @ WooCommerce Cart/Checkout
+* @how-to Watch tutorial @ https://businessbloomer.com/?p=19055
+* @sourcecode https://businessbloomer.com/?p=20362
+* @author Jamie Gill, Rodolfo Melogli, Lubo Enev
+* @testedwith WooCommerce 2.6.14
+*/
+ 
+function bbloomer_wc_discount_total() {
+ 
+    global $woocommerce;
+      
+    $discount_total = 0;
+      
+    foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values) {
+          
+    $_product = $values['data'];
+  
+        if ( $_product->is_on_sale() ) {
+        $discount = ($_product->regular_price - $_product->sale_price) * $values['quantity'];
+        $discount_total += $discount;
+        }
+  
+    }
+             
+    if ( $discount_total > 0 ) {
+    echo '<tr class="cart-discount">
+    <th>'. __( 'You Saved', 'woocommerce' ) .'</th>
+    <td data-title=" '. __( 'You Saved', 'woocommerce' ) .' ">'
+    . wc_price( $discount_total + $woocommerce->cart->discount_cart ) .'</td>
+    </tr>';
+    }
+ 
+}
+ 
+// Hook our values to the Basket and Checkout pages
+ 
+add_action( 'woocommerce_cart_totals_after_order_total', 'bbloomer_wc_discount_total', 99);
+add_action( 'woocommerce_review_order_after_order_total', 'bbloomer_wc_discount_total', 99);
+
+
 
 
 
