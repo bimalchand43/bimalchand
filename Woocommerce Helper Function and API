@@ -499,6 +499,23 @@ function print_free_shipping(){
 }
 
 
+// Add custom field to shop loop
+ 
+add_action( 'woocommerce_after_shop_loop_item_title', 'ins_woocommerce_product_excerpt', 35, 2);  
+ 
+if (!function_exists('ins_woocommerce_product_excerpt'))
+{
+function ins_woocommerce_product_excerpt() {
+global $post;
+if ( is_home() || is_shop() || is_product_category() || is_product_tag() ) {
+echo '<span class="excerpt">';
+echo get_post_meta( $post->ID, 'special', true );
+echo '</span>';
+}
+}
+}
+
+
 
 
 
