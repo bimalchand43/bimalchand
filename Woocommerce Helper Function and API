@@ -694,6 +694,32 @@ add_action( 'woocommerce_cart_totals_after_order_total', 'bbloomer_wc_discount_t
 add_action( 'woocommerce_review_order_after_order_total', 'bbloomer_wc_discount_total', 99);
 
 
+//Apply a Coupon Programmatically if a Product is in the Cart
+ 
+add_action( '<a href="#">woocommerce</a>_before_cart', 'bbloomer_apply_matched_coupons' );
+ 
+function bbloomer_apply_matched_coupons() {
+    global $<a href="#">woocommerce</a>;
+ 
+    $coupon_code = 'freeweek'; 
+ 
+    if ( $<a href="#">woocommerce</a>->cart->has_discount( $coupon_code ) ) return;
+ 
+    foreach ($<a href="#">woocommerce</a>->cart->cart_contents as $key => $values ) {
+ 
+    // this is your product ID
+    $autocoupon = array(745);
+ 
+    if(in_array($values['product_id'],$autocoupon)){    
+     
+        $<a href="#">woocommerce</a>->cart->add_discount( $coupon_code );
+        wc_print_notices();
+    }
+    }
+ 
+}
+
+
 
 
 
