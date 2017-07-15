@@ -515,6 +515,79 @@ echo '</span>';
 }
 }
 
+//Conditional Tags
+
+is_woocommerce()
+is_shop()
+is_product_category()
+is_product_category( 'shirts' )
+is_product_category( array( 'shirts', 'games' ) )
+
+is_product_tag()
+is_product_tag( 'shirts' )
+is_product_tag( array( 'shirts', 'games' ) )
+
+//Single product page
+
+is_product()
+
+//cart page
+is_cart()
+
+//Checkout page
+is_checkout()
+
+//Customer account pages
+
+is_account_page()
+
+
+//Endpoint
+
+is_wc_endpoint_url() //Returns true when viewing a WooCommerce endpoint
+
+is_wc_endpoint_url( 'order-pay' ) //When the endpoint page for order pay is being displayed.
+
+is_wc_endpoint_url( 'order-received' ) //When the endpoint page for order received is being displayed.
+
+is_wc_endpoint_url( 'view-order' )
+When the endpoint page for view order is being displaye
+
+is_wc_endpoint_url( 'edit-account' )
+When the endpoint page for edit account is being displayed.
+
+is_wc_endpoint_url( 'edit-address' )
+When the endpoint page for edit address is being displayed.
+
+is_wc_endpoint_url( 'lost-password' )
+When the endpoint page for lost password is being displayed.
+
+is_wc_endpoint_url( 'customer-logout' )
+When the endpoint page for customer logout  is being displayed.
+
+is_wc_endpoint_url( 'add-payment-method' )
+When the endpoint page for add payment method is being displayed.
+
+Ajax request
+is_ajax()
+Returns true when the page is loaded via ajax.
+
+
+//Working example
+
+if ( is_product_category() ) {
+  
+  if ( is_product_category( 'shirts' ) ) {
+    echo 'Hi! Take a look at our sweet tshirts below.';
+  } elseif ( is_product_category( 'games' ) ) {
+    echo 'Hi! Hungry for some gaming?';
+  } else {
+    echo 'Hi! Check our our products below.';
+  }
+
+}
+
+
 
 
 
