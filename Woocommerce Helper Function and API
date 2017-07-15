@@ -425,5 +425,58 @@ function eshopper_reorder_tabs( $tabs ) {
 28. for cart we can use page.php template
 
 
+===============================================================================================================
+
+
+// remove default sorting dropdown in StoreFront Theme
+ 
+add_action('init','delay_remove');
+ 
+function delay_remove() {
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10 );
+}
+
+
+// remove default sorting dropdown
+ 
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+// Change number or products per row to 3
+add_filter('loop_shop_columns', 'loop_columns');
+if (!function_exists('loop_columns')) {
+	function loop_columns() {
+		return 3; // 3 products per row
+	}
+}
+
+
+// Override theme default specification for product # per row
+function loop_columns() {
+return 5; // 5 products per row
+}
+add_filter('loop_shop_columns', 'loop_columns', 999);
+
+
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+
+function new_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options -> Reading
+  // Return the number of products you wanna show per page.
+  $cols = 9;
+  return $cols;
+}
+
+
+// Removes showing results in Storefront theme
+ 
+add_action('init','delay_remove_result_count');
+ 
+function delay_remove_result_count() {
+remove_action( '<a href="#">woocommerce</a>_after_shop_loop', '<a href="#">woocommerce</a>_result_count', 20 );
+remove_action( '<a href="#">woocommerce</a>_before_shop_loop', '<a href="#">woocommerce</a>_result_count', 20 );
+}
+
+
 
 
