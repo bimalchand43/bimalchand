@@ -495,8 +495,8 @@ function new_loop_shop_per_page( $cols ) {
 add_action('init','delay_remove_result_count');
  
 function delay_remove_result_count() {
-remove_action( '<a href="#">woocommerce</a>_after_shop_loop', '<a href="#">woocommerce</a>_result_count', 20 );
-remove_action( '<a href="#">woocommerce</a>_before_shop_loop', '<a href="#">woocommerce</a>_result_count', 20 );
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 }
 
 //WooCommerce: Add Stock Quantity on Shop Page
@@ -657,23 +657,23 @@ add_action( 'woocommerce_review_order_after_order_total', 'bbloomer_wc_discount_
 
 //Apply a Coupon Programmatically if a Product is in the Cart
  
-add_action( '<a href="#">woocommerce</a>_before_cart', 'bbloomer_apply_matched_coupons' );
+add_action( 'woocommerce_before_cart', 'bbloomer_apply_matched_coupons' );
  
 function bbloomer_apply_matched_coupons() {
-    global $<a href="#">woocommerce</a>;
+    global $woocommerce;
  
     $coupon_code = 'freeweek'; 
  
-    if ( $<a href="#">woocommerce</a>->cart->has_discount( $coupon_code ) ) return;
+    if ( $woocommerce->cart->has_discount( $coupon_code ) ) return;
  
-    foreach ($<a href="#">woocommerce</a>->cart->cart_contents as $key => $values ) {
+    foreach ($woocommerce->cart->cart_contents as $key => $values ) {
  
     // this is your product ID
     $autocoupon = array(745);
  
     if(in_array($values['product_id'],$autocoupon)){    
      
-        $<a href="#">woocommerce</a>->cart->add_discount( $coupon_code );
+        $woocommerce->cart->add_discount( $coupon_code );
         wc_print_notices();
     }
     }
