@@ -3544,7 +3544,7 @@ function playIntroVideo()
 
 
 
-//for category SEO 
+//for category SEO using custome field plugin
 
 
 <?php if(is_category('blog')){ ?>
