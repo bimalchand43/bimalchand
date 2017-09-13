@@ -3538,3 +3538,29 @@ function playIntroVideo()
     document.getElementById("the-video").play();
     document.getElementById("the-video").style.display = "block";
 }  
+
+
+
+
+
+
+//for category SEO 
+
+
+<?php if(is_category('blog')){ ?>
+    <?php
+    $terms = get_the_terms( get_the_ID(), 'category');
+    if( !empty($terms) ) { 
+    $term = array_pop($terms);
+    $category_seo_title = get_field('category_seo_title', $term ); 
+    $category_seo_desc = get_field('category_seo_desc', $term ); 
+    $category_seo_keyword = get_field('category_seo_keyword', $term ); 
+    ?>
+    <title><?php echo $category_seo_title;  ?></title>
+    <meta  name="description" content="<?php echo $category_seo_desc; ?>">
+    <meta name="keyword" content="<?php echo $category_seo_keyword; ?>">
+    <?php } }else{ ?>
+    <title><?php wp_title('', true, 'right'); ?></title>
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <?php } ?>
