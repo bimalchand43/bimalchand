@@ -3564,3 +3564,9 @@ function playIntroVideo()
     <meta name="description" content="Free Web tutorials">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <?php } ?>
+    
+ //conditional statement   
+ <?php if ( !is_single(array(393,11)) ) { ?>
+
+ <?php 
+  if ( in_category('blog')){ ?>
