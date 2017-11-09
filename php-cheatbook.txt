@@ -3570,3 +3570,10 @@ function playIntroVideo()
 
  <?php 
   if ( in_category('blog')){ ?>
+  
+  
+  //wp engine setting
+  //issue of wp-engin blog load problems
+
+#https://47os502xz0pt35owqv2lpl2i-wpengine.netdna-ssl.com/wp-content/themes/alliance_ulistic/masonary_ajax_handler_blog.php# => https://www.alliancetechpartners.com/wp-content/themes/alliance_ulistic/masonary_ajax_handler_blog.php
+
