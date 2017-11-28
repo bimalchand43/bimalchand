@@ -3577,3 +3577,25 @@ function playIntroVideo()
 
 #https://47os502xz0pt35owqv2lpl2i-wpengine.netdna-ssl.com/wp-content/themes/alliance_ulistic/masonary_ajax_handler_blog.php# => https://www.alliancetechpartners.com/wp-content/themes/alliance_ulistic/masonary_ajax_handler_blog.php
 
+
+//monthly archive by category
+ <div class="wrapper">
+                        <h4>Monthly Archives</h4>
+                            <ul class="monthly_list">
+                            <?php
+                     global $wpdb, $wp_locale;
+                    $query = "select YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts from $wpdb->posts,  $wpdb->term_taxonomy, $wpdb->term_relationships 
+                        WHERE $wpdb->posts.post_status = 'publish' 
+                        AND $wpdb->posts.post_type = 'post'
+                        AND $wpdb->term_taxonomy.term_id = 146
+                        AND $wpdb->posts.ID = $wpdb->term_relationships.object_id
+                        AND $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->term_relationships.term_taxonomy_id
+                     GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC"; 
+                     $arcresults = $wpdb->get_results($query); 
+                    foreach ($arcresults as $arcresult): 
+                    $text = sprintf(__('%1$s %2$d'), $wp_locale->get_month($arcresult->month), $arcresult->year);?>
+                    <li><a href="<?php bloginfo('url') ?>/category/video-library/<?php echo $arcresult->year; ?>/<?php echo str_pad($arcresult->month, 2, '0', STR_PAD_LEFT); ?>"><?php echo $text;  ?></a></li>
+                      <?php endforeach; ?> 
+                            </ul>
+                        </div><!--wrapper-->
+
