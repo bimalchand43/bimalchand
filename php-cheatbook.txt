@@ -3597,5 +3597,16 @@ function playIntroVideo()
                     <li><a href="<?php bloginfo('url') ?>/category/video-library/<?php echo $arcresult->year; ?>/<?php echo str_pad($arcresult->month, 2, '0', STR_PAD_LEFT); ?>"><?php echo $text;  ?></a></li>
                       <?php endforeach; ?> 
                             </ul>
-                        </div><!--wrapper-->
+                    </div><!--wrapper-->
+		    
+		    
+//userdefined hook in functions.php
+function compass_colophon(){
+echo 'footer text here';    
+}
+add_action( 'compass_in_footer', 'compass_colophon' );
+
+
+//output display section in footer
+<?php do_action( 'compass_in_footer' ); ?>
 
