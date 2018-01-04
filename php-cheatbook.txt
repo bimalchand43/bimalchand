@@ -3610,3 +3610,16 @@ add_action( 'compass_in_footer', 'compass_colophon' );
 //output display section in footer
 <?php do_action( 'compass_in_footer' ); ?>
 
+//pagination plugin css
+/********************* Pagination **********************/
+#page_content { border-bottom: 1px solid #adadad; border-top: 1px solid #adadad; margin-top: 22px;}
+.wp-pagenavi a, .wp-pagenavi span { border: medium none; color: #666666;  font-family: 'Fjalla One', sans-serif; font-size: 24px; margin: 2px; padding: 3px 5px; text-decoration: none; text-transform: uppercase; font-weight:500;}
+.wp-pagenavi .page, .wp-pagenavi .extend { padding:9.5px 16px !important; background: #cccccc; color: #666666;}
+.wp-pagenavi{padding-bottom: 10px; padding-top: 10px;}
+.wp-pagenavi .current { padding:9.5px 16px!important; background: #0c284d; color: #fff;}
+
+.wp-pagenavi a, .wp-pagenavi span { border: medium none !important; margin: 2px !important; padding: 3px 22px 3px 5px !important; text-decoration: none !important; }
+
+.wp-pagenavi .first, .wp-pagenavi .previouspostslink, .wp-pagenavi .nextpostslink, .wp-pagenavi .last { background:#0080c8; padding:9.5px 13.5px !important; color: #fff;}
+.page .nextpostslink > img { margin: 11px 0;}
+
