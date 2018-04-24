@@ -3764,3 +3764,52 @@ li.ubermenu-clients-menu ul.ubermenu-submenu{margin-left: 78px !important;}
 ul.ubermenu-submenu-drop li a span{ font-size: 15px!important;font-weight: normal;}
 /**********************************eof ubermenu*************************************************************/
 
+get value of custome field in metabox
+ $number_of_product = isset( $instance['number_of_product'] ) ? absint( $instance['number_of_product'] ) : 4;
+            $args = array(
+                'post_type' =>  'product',
+                'posts_per_page' => $number_of_product,
+            );
+           
+            $latest_products = new WP_Query( $args );
+            if( $latest_products->have_posts() ):
+                echo '<div class="sidebar-latest-product" >';
+                    echo "<ul>";
+                    while(  $latest_products->have_posts() ):
+                        $latest_products->the_post();
+                            $id = get_the_ID();
+			    
+         $metadata = get_post_meta( $id, 'rws_product_section', true );
+                            $html = '<span class="price">';
+
+                            $regular_price = ( isset( $metadata['regular_price'] ) ) ? $metadata['regular_price'] : '';
+                            $isOnSale = ( $metadata['on_sale'] ) ? true : false;
+                            $sale_price = ( isset( $metadata['sale_price'] ) ) ? $metadata['sale_price'] : '';
+
+                            if( $regular_price && $isOnSale ) {
+                                $html .= '<del>
+                                        <span class="Price-currencySymbol">RS </span>
+                                        '.$regular_price.'
+                                        </span>
+                                    </del>';
+                            } else {
+                                if($regular_price){
+                                   $html .= '<span class="Price-currencySymbol">RS </span>
+                                        '.$regular_price.'
+                                        </span>';   
+                                }
+                                
+                            }
+
+                            if( $isOnSale && $sale_price ) {
+                                $html .= '<ins>
+                                        <span class="Price-amount amount">
+                                            <span class="Price-currencySymbol"> RS </span>
+                                            '.$sale_price.'
+                                        </span>
+                                    </ins>';
+                            }
+
+                            $html .= '</span>';
+
+
