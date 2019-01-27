@@ -3811,5 +3811,41 @@ get value of custome field in metabox
                             }
 
                             $html .= '</span>';
+==========================================================================================================
+Query through custom meta box array item
+
+<div class="tabContent" id="Accommo">
+                                    <div class="accomodation">
+                                        <?php
+                                          wp_reset_query(); 
+                                          $acc = get_post_meta(get_the_ID(),'_accomodation' , true);
+                                          $acc = explode(',' , $acc);
+                                          $acc = array_filter($acc);
+                                          if(is_array($acc) and !empty($acc)){
+                                            $args = array(
+                                                        'post_type' => 'hotel',
+                                                        'posts_per_page' => -1,
+                                                        'post__in'       => $acc 
+                                                );
+                                            $loop = new WP_Query($args);
+                                            while($loop->have_posts()):$loop->the_post();
+                                        ?>
+                                        <div class="accomoList">
+                                            <div class="accomoImg">
+                                                <?php $alt= get_the_title(); ?>
+                                                <?php the_post_thumbnail('img-331-180', array('alt' => $alt));?>
+                                            </div>
+                                            <div class="accomoInfo">
+                                                <h3><?php the_title(); ?></h3>
+                                                <?php the_content(); ?>
+                                                <a target="_blank" href="<?php echo get_post_meta(get_the_ID() , 'ebound_hotel_url' , true);?>" class="otherLinks"><i class="fa fa-globe" aria-hidden="true"></i><?php echo get_post_meta(get_the_ID() , 'ebound_hotel_url' , true);?></a>
+                                                <span class="mobNmr"><i class="fa fa-mobile" aria-hidden="true"></i><?php echo get_post_meta(get_the_ID() , 'ebound_hotel_tel' , true);?></span>
+                                            </div>
+                                        </div>
+                                    <?php endwhile; } ?>
+
+                                    </div>
+
+                                </div>
 
 
